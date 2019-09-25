@@ -13,8 +13,13 @@ class EventosController {
     }
     
     public function ShowEventos(){
-        $tareas = $this->model->GetEventos();
-        $this->view->DisplayEventos($tareas);
+        $eventos = $this->model->GetEventos();
+        $this->view->DisplayEventos($eventos);
+    }
+
+    public function ShowCiudades(){
+        $ciudades = $this->model->GetCiudades();
+        $this->view->DisplayCiudades($ciudades);
     }
 
     // public function InsertarTarea(){
