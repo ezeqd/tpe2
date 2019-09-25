@@ -11,9 +11,18 @@ class EventosController {
         $this->model = new EventosModel();
         $this->view = new EventosView();
     }
-    
+
     public function ShowEventos(){
         $eventos = $this->model->GetEventos();
+        $ciudades = $this->model->GetCiudades();
+        foreach ($eventos as $evento){
+            $id = $evento->id_ciudad;
+            foreach ($ciudades as $ciudad){
+                if ($ciudad->id_ciudad == $id){
+                    $evento->id_ciudad = $ciudad->nombre;
+                }
+            }
+        }
         $this->view->DisplayEventos($eventos);
     }
 
