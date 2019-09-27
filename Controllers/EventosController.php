@@ -1,5 +1,6 @@
 <?php
 require_once "./Models/EventosModel.php";
+require_once "./Models/CiudadesModel.php";
 require_once "./Views/EventosView.php";
 
 class EventosController {
@@ -19,36 +20,22 @@ class EventosController {
             $id = $evento->id_ciudad;
             foreach ($ciudades as $ciudad){
                 if ($ciudad->id_ciudad == $id){
-                    $evento->id_ciudad = $ciudad->nombre;
+                    $evento->ciudad = $ciudad->nombre;
                 }
             }
         }
         $this->view->DisplayEventos($eventos);
     }
 
-    public function ShowCiudades(){
-        $ciudades = $this->model->GetCiudades();
-        $this->view->DisplayCiudades($ciudades);
+    public function InsertarEvento(){
+        $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
+        header("Location: " . BASE_URL);
     }
 
-    // public function InsertarTarea(){
-    //     $finalziada = 0;
-    //     if($_POST['finalizada'] == 'on'){
-    //         $finalziada = 1;
-    //     }
-    //     $this->model->InsertarTarea($_POST['titulo'],$_POST['descripcion'],$_POST['prioridad'],$finalziada );
-    //     header("Location: " . BASE_URL);
-    // }
-
-    // public function FinalizarTarea($id){
-    //     $this->model->FinalizarTarea($id);
-    //     header("Location: " . BASE_URL);
-    // }
-
-    // public function BorrarTarea($id){
-    //     $this->model->BorrarTarea($id);
-    //     header("Location: " . BASE_URL);
-    // }
+    public function BorrarEvento($id){
+        $this->model->BorrarEvento($id);
+        header("Location: " . BASE_URL);
+    }
 }
 
 

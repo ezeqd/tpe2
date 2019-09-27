@@ -5,7 +5,7 @@
                 {$evento->nombre} 
                 {$evento->fecha} 
                 {$evento->organizador} 
-                {$evento->id_ciudad}
+                {$evento->ciudad}
             </li>       
         {/foreach}
 

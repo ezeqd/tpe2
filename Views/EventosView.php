@@ -1,6 +1,6 @@
 <?php
 
-require('libs/Smarty.class.php');
+require_once('libs/Smarty.class.php');
 
 class EventosView {
 
@@ -16,14 +16,6 @@ class EventosView {
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->assign('lista_eventos',$eventos);
         $this->smarty->display('templates/ver_eventos.tpl');
-    }
-    
-    public function DisplayCiudades($ciudades){
-        
-        $this->smarty->assign('titulo',"Mostrar Ciudades");
-        $this->smarty->assign('BASE_URL',BASE_URL);
-        $this->smarty->assign('lista_ciudades',$ciudades);
-        $this->smarty->display('templates/ver_ciudades.tpl');
     }
 }
 ?>
