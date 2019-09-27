@@ -18,10 +18,10 @@ class CiudadesController {
         $this->view->DisplayCiudades($ciudades);
     }
 
-    // public function InsertarEvento(){
-    //     $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
-    //     header("Location: " . BASE_URL);
-    // }
+    public function InsertarEvento(){
+        $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
+        header("Location: " . BASE_URL);
+    }
 
     // public function BorrarEvento($id){
     //     $this->model->BorrarEvento($id);

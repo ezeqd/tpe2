@@ -16,10 +16,10 @@ else{
         $partesURL = explode("/", $action);
 
         if($partesURL[0] == "eventos"){
+            // if (isset($partesURL[1])&&($partesURL[1]="insertar"){
+            //     $eventosController->InsertarEvento();
+            // }  
             $eventosController->ShowEventos();
-            // if (isset($partesURL[1])&&($partesURL[1]="Insertar"){
-                //     $controller->ShowEventos();
-                // }  
         }
         elseif($partesURL[0] == "ciudades") {
             $ciudadesController->ShowCiudades();

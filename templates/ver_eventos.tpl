@@ -9,7 +9,7 @@
             </li>       
         {/foreach}
 
-        <form action="insertar" method="post">
+        <form action="evento/insertar" method="post">
             <input type="text" name="nombre" placeholder="Nombre">
             <input type="text" name="fecha" placeholder="Fecha">
             <input type="text" name="organizador" placeholder="Organizador">
