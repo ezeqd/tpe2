@@ -12,7 +12,6 @@ class CiudadesModel {
         $sentencia = $this->db->prepare( "select * from ciudad");
         $sentencia->execute();
         $ciudades = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        
         return $ciudades;
     }
 
