@@ -15,11 +15,10 @@ else{
 
         if($partesURL[0] == "eventos"){
             $controller->ShowEventos();
-        }elseif($partesURL[0] == "ciudades") {
+        }
+        elseif($partesURL[0] == "ciudades") {
             $controller->ShowCiudades();
         }
-        // }elseif($partesURL[0] == "---") {
-        //     $controller->---($partesURL[1]);
         // }elseif($partesURL[0] == "borrar") {
         //     $controller->BorrarTarea($partesURL[1]);
         // }
