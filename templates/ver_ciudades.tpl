@@ -1,10 +1,10 @@
 {include file="header.tpl"}
 
         {foreach from=$lista_ciudades item=ciudad}
-            <li>            
-                {$ciudad->nombre} 
+            <li>
+                {$ciudad->nombre}
                 {$ciudad->capacidad}
-            </li>       
+            </li>
         {/foreach}
 
         <form action="insertar" method="post">
@@ -12,5 +12,4 @@
             <input type="text" name="capacidad" placeholder="Capacidad">
             <input type="submit" value="Insertar">
         </form>
-    </body>
-</html>
+{include file="footer.tpl"}
