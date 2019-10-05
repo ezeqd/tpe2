@@ -1,3 +1,16 @@
+<div class="panel">
+	<div class="row">
+		<div class="medium-6 large-6 columns">© Copyright no one at all. Go to town.</div>
+		<div class="medium-6 large-6 columns">
+			<ul class="inline-list right">
+				<li><a href="#">link</a></li>
+				<li><a href="#">link</a></li>
+				<li><a href="#">link</a></li>
+				<li><a href="#">link</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

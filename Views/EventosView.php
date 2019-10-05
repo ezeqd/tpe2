@@ -11,7 +11,6 @@ class EventosView {
     }
     
     public function DisplayEventos($eventos){
-        
         $this->smarty->assign('titulo',"Mostrar Eventos");
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->assign('lista_eventos',$eventos);

@@ -37,6 +37,4 @@ class EventosController {
         header("Location: " . BASE_URL);
     }
 }
-
-
 ?>

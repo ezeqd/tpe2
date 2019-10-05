@@ -9,14 +9,14 @@ class EventosModel {
     }
 
     public function GetEventos(){
-        $sentencia = $this->db->prepare( "select * from evento");
+        $sentencia = $this->db->prepare( "SELECT * FROM evento");
         $sentencia->execute();
         $eventos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $eventos;
     }
 
     public function GetCiudades(){
-        $sentencia = $this->db->prepare( "select * from ciudad");
+        $sentencia = $this->db->prepare( "SELECT * FROM ciudad");
         $sentencia->execute();
         $ciudades = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $ciudades;
