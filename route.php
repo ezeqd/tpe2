@@ -1,9 +1,13 @@
 <?php
-require_once "Controllers/EventosController.php";
-require_once "Controllers/CiudadesController.php";
+require_once ("Controllers/EventosController.php");
+require_once ("Controllers/CiudadesController.php");
+require_once ("Controllers/UserController.php");
 
 $action = $_GET["action"];
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+// define("URL_TAREAS", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/tareas');
+// define("URL_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
+// define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
 
 $eventosController = new EventosController();
 $ciudadesController = new CiudadesController();
@@ -26,9 +30,24 @@ else{
         elseif($partesURL[0] == "ciudades") {
             $ciudadesController->ShowCiudades();
         }
+
         // }elseif($partesURL[0] == "borrar") {
         //     $controller->BorrarTarea($partesURL[1]);
         // }
+
+        // elseif($partesURL[0] == "login") {
+        //     $controllerUser = new UserController();
+        //     $controllerUser->Login();
+        // }
+        // elseif($partesURL[0] == "iniciarSesion") {
+        //     $controllerUser = new UserController();
+        //     $controllerUser->IniciarSesion();
+        // }
+        // elseif($partesURL[0] == "logout") {
+        //     $controllerUser = new UserController();
+        //     $controllerUser->Logout();
+        // }
+
     }
 }
 ?>
