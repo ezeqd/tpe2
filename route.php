@@ -23,17 +23,17 @@ else{
             if ((isset($partesURL[1]))&&($partesURL[1] == "insertar")){
                 $eventosController->InsertarEvento();
             }  
-            else {
+            elseif ((isset($partesURL[1]))&&($partesURL[1] == "borrar")){
+                $eventosController->BorrarEvento($partesURL[2]);
+            }
+            else{
                 $eventosController->ShowEventos();
             }
+
         }
         elseif($partesURL[0] == "ciudades") {
             $ciudadesController->ShowCiudades();
         }
-
-        // }elseif($partesURL[0] == "borrar") {
-        //     $controller->BorrarTarea($partesURL[1]);
-        // }
 
         // elseif($partesURL[0] == "login") {
         //     $controllerUser = new UserController();
@@ -48,6 +48,6 @@ else{
         //     $controllerUser->Logout();
         // }
 
-    }
+}
 }
 ?>
