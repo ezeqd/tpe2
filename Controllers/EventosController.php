@@ -10,12 +10,13 @@ class EventosController {
 
 	function __construct(){
         $this->model = new EventosModel();
+        $this->Ciudadesmodel = new CiudadesModel();
         $this->view = new EventosView();
     }
 
     public function ShowEventos(){
         $eventos = $this->model->GetEventos();
-        $ciudades = $this->model->GetCiudades();
+        $ciudades = $this->Ciudadesmodel->GetCiudades();
         foreach ($eventos as $evento){
             $id = $evento->id_ciudad;
             foreach ($ciudades as $ciudad){

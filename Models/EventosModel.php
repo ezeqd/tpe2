@@ -14,13 +14,13 @@ class EventosModel {
         $eventos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $eventos;
     }
-
-    public function GetCiudades(){
-        $sentencia = $this->db->prepare( "SELECT * FROM ciudad");
-        $sentencia->execute();
-        $ciudades = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $ciudades;
-    }
+    // En Controller de Eventos creamos el model de ciudades para consultarle a ese model las ciudades y no copiar codigo acá 
+    // public function GetCiudades(){
+    //     $sentencia = $this->db->prepare( "SELECT * FROM ciudad");
+    //     $sentencia->execute();
+    //     $ciudades = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    //     return $ciudades;
+    // }
 
     public function InsertarEvento($nombre,$fecha,$organizador,$id_ciudad ){
         $sentencia = $this->db->prepare("INSERT INTO evento(nombre, fecha, organizador, id_ciudad) VALUES(?,?,?,?)");

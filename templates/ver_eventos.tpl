@@ -16,7 +16,7 @@
                     <td class="animated fadeIn">{$evento->organizador}</td>
                     <td class="animated fadeIn">{$evento->ciudad}</td>
                     <td class="animated fadeIn">
-                      <form action="eventos/borrar/{$evento->id_ciudad}" method="post"><button type="submit">Borrar</form>
+                      <form action="eventos/borrar/{$evento->id_ciudad}"><button type="submit">Borrar</form>
                     <td>
                     <td class="animated fadeIn">
                       <a href="eventos/borrar/{$evento->id_ciudad}" >Borrar</a>
