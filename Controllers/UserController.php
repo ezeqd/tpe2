@@ -21,18 +21,18 @@ class UserController {
             session_start();
             $_SESSION['user'] = $usuario->email;
             $_SESSION['userId'] = $usuario->id;
-            header("Location: " . URL_TAREAS);
+            header("Location: " . URL_EVENTOS);
         }else{
             header("Location: " . URL_LOGIN);
         }
        // header("Location: " . BASE_URL);
     }
 
-    public function Login(){
+    public function ShowLogin(){
         $this->view->DisplayLogin();
     }
 
-    public function Logout(){
+    public function ShowLogout(){
         session_start();
         session_destroy();
         header("Location: " . URL_LOGIN);

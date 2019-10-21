@@ -19,7 +19,7 @@ $router = new Router();
 $router->addRoute("eventos", "GET", "EventosApiController", "ShowEventos");
 $router->addRoute("ciudades", "GET", "CiudadesApiController", "ShowCiudades");
 $router->addRoute("eventos", "POST", "EventosApiController", "InsertarEvento");
-// $router->addRoute("tareas/:ID", "DELETE", "TareasApiController", "deleteTask");
+$router->addRoute("eventos/borrar/:ID", "DELETE", "EventosApiController", "BorrarEvento");
 // $router->addRoute("tareas/:ID", "PUT", "TareasApiController", "updateTask");
 
 

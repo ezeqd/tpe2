@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 21-10-2019 a las 23:43:43
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-10-2019 a las 00:10:48
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,7 +71,10 @@ INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`
 (2, 'Evento2', '2019-12-27', 'Organizador2', 5),
 (3, 'Evento3', '2019-12-27', 'Organizador2', 6),
 (4, 'Evento4', '2019-12-27', 'Organizador3', 2),
-(5, 'Evento5', '2019-12-27', 'Organizador2', 4);
+(5, 'Evento5', '2019-12-27', 'Organizador2', 4),
+(6, 'dasd', '2019-09-02', '212', 1),
+(7, 'dasas', '0000-00-00', '212', 4),
+(8, '', '0000-00-00', '', 3);
 
 -- --------------------------------------------------------
 
@@ -84,6 +87,15 @@ CREATE TABLE `usuario` (
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(25) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`) VALUES
+(1, 'nadie@tpe2.com', 'hola'),
+(2, 'martin@tpe2.com', 'hola1'),
+(3, 'eze@tpe2.com', 'hola2');
 
 --
 -- Índices para tablas volcadas
@@ -122,13 +134,13 @@ ALTER TABLE `ciudad`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

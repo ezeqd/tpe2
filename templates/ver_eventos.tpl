@@ -16,8 +16,11 @@
                     <td class="animated fadeIn">{$evento->organizador}</td>
                     <td class="animated fadeIn">{$evento->ciudad}</td>
                     <td class="animated fadeIn">
-                      <form action="eventos/borrar/{$evento->id_ciudad}" method="delete"><button type="submit">Borrar</form>
-                    </td>
+                      <form action="eventos/borrar/{$evento->id_ciudad}" method="post"><button type="submit">Borrar</form>
+                    <td>
+                    <td class="animated fadeIn">
+                      <a href="eventos/borrar/{$evento->id_ciudad}" >Borrar</a>
+                    <td>
                   </tr>
           {/foreach}
         </tbody>

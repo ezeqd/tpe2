@@ -24,6 +24,11 @@ class EventosApiController extends ApiController{
         $this->view->response($eventos, 200);
     }
 
+    public function BorrarEvento($id){
+        $this->model->BorrarEvento($id);
+        header("Location: " . BASE_URL);
+    }
+
     /**
      * Obtiene una tarea dado un ID
      * 
