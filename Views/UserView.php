@@ -10,8 +10,9 @@ class UserView {
         $this->smarty = new Smarty();
     }
     
-    public function DisplayLogin(){
-        $this->smarty->assign('titulo',"Login");
+    public function DisplayLogin($error = null){
+        $this->smarty->assign('titulo',"Iniciar Sesión");
+        $this->smarty->assign('error',$error);
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/login.tpl');
     }

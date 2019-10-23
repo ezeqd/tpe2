@@ -6,8 +6,8 @@ require_once ("Controllers/UserController.php");
 $action = $_GET["action"];
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 define("URL_EVENTOS", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/eventos');
-// define("URL_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
-// define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
+define("URL_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
+define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
 
 $eventosController = new EventosController();
 $ciudadesController = new CiudadesController();
@@ -38,13 +38,11 @@ else{
         elseif($partesURL[0] == "login") {
             $userController->ShowLogin();
         }
-        elseif($partesURL[0] == "iniciarSesion") {
-            $controllerUser = new UserController();
-            $controllerUser->IniciarSesion();
+        elseif($partesURL[0] == "iniciarsesion") {
+            $userController->IniciarSesion();
         }
         elseif($partesURL[0] == "logout") {
-            $controllerUser = new UserController();
-            $controllerUser->Logout();
+            $userController->ShowLogout();
         }
     }
 }

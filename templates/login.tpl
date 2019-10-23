@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form action="login" class="log-in-form">
+<form action="iniciarsesion" method="POST" class="log-in-form">
   <h4 class="text-center">Log in with you email account</h4>
   <label>Email
     <input name="usuario" type="usuario" placeholder="somebody@example.com">
@@ -13,4 +13,7 @@
   <p class="text-center"><a href="#">Forgot your password?</a></p>
 </form>
 
+{if $error}
+<div>{$error}</div>
+{/if}
 {include file="footer.tpl"}

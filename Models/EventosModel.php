@@ -27,8 +27,13 @@ class EventosModel {
         $sentencia->execute(array($nombre,$fecha,$organizador,$id_ciudad));
     }
 
+    public function EditarEvento($id,$nombre,$fecha,$organizador,$ciudad){
+        $sentencia =  $this->db->prepare("UPDATE evento SET nombre=?, fecha=?, organizador=?, ciudad=? WHERE id_evento=?");
+        $sentencia->execute(array($nombre,$fecha,$organizador,$ciudad,$id));
+    }
+
     public function BorrarEvento($id){
-        $sentencia = $this->db->prepare("DELETE FROM evento WHERE id=?");
+        $sentencia = $this->db->prepare("DELETE FROM evento WHERE id_evento=?");
         $sentencia->execute(array($id));
     }
 }

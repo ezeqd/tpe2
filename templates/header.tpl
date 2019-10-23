@@ -8,9 +8,9 @@
                 <title>{$titulo}</title>
             </head>
             <header>
-              <div class="logo">
-
-              </div>
+              <div class="logo"></div>
+              <div><form action="login" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log in"></input></form></div>
+              <div><form action="logout" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log out"></input></form></div>
             </header>
             <body>
             {$titulo}

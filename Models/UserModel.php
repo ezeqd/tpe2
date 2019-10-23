@@ -8,9 +8,9 @@ class UserModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe2_db;charset=utf8', 'root', '');
     }
 
-    public function GetPassword($user){
-        $sentencia = $this->db->prepare( "SELECT * FROM usuarios WHERE email = ?");
-        $sentencia->execute(array($user));
+    public function GetPassword($usuario){
+        $sentencia = $this->db->prepare( "SELECT * FROM usuario WHERE email = ?");
+        $sentencia->execute(array($usuario));
         
         $password = $sentencia->fetch(PDO::FETCH_OBJ);
         
