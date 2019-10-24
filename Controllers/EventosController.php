@@ -46,7 +46,7 @@ class EventosController {
     public function BorrarEvento($id){
         // $this->$userController->checkLogIn();
         $this->model->BorrarEvento($id);
-        header("Location: " . BASE_URL);
+        // header("Location: " . BASE_URL);
     }
 }
 ?>

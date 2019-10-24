@@ -26,7 +26,7 @@ class CiudadesController {
         header("Location: " . BASE_URL);
     }
 
-    public function BorrarEvento($id){
+    public function BorrarEvento(){
         $this->userController->checkLogIn();
         $this->model->BorrarEvento($id);
         header("Location: " . BASE_URL);

@@ -24,7 +24,7 @@ else{
             if ((isset($partesURL[1]))&&($partesURL[1] == "insertar")){
                 $eventosController->InsertarEvento();
             }  
-            elseif ((isset($partesURL[1]))&&($partesURL[1] == "borrar")){
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "borrar")){
                 $eventosController->BorrarEvento($partesURL[2]);
                 // var_dump($partesURL[2]);
             }
