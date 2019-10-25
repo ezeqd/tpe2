@@ -1,4 +1,5 @@
 {include file="header.tpl"}
+<script type="text/javascript" src="js/scripts.js"></script>
         <table>
           <thead>
             <tr>
@@ -11,32 +12,26 @@
           <tbody>
           {foreach from=$lista_eventos item=evento}
                   <tr>
-                    <td class="animated fadeIn">{$evento->nombre}</td>
-                    <td class="animated fadeIn">{$evento->fecha}</td>
-                    <td class="animated fadeIn">{$evento->organizador}</td>
-                    <td class="animated fadeIn">{$evento->ciudad}</td>
+                    <td id="nombre{$evento->id_evento}" class="animated fadeIn">{$evento->nombre}</td>
+                    <td id="fecha{$evento->id_evento}"class="animated fadeIn">{$evento->fecha}</td>
+                    <td id="organizador{$evento->id_evento}"class="animated fadeIn">{$evento->organizador}</td>
+                    <td id="ciudad{$evento->id_evento}" class="animated fadeIn">{$evento->ciudad}</td>
                     <td class="animated fadeIn">
-                      <form action="eventos/borrar/{$evento->id_ciudad}" method="delete" ><button type="submit">Borrar</form>
-                    <td>
+                      <form action="eventos/borrar/{$evento->id_evento}"><button type="submit">Borrar</form>
+                    </td>
                     <td class="animated fadeIn">
-                      <a href="eventos/borrar/{$evento->id_ciudad}" >Borrar</a>
-                    <td>
-                    <td class="animated fadeIn">
-                      <form action="eventos/editar/{$evento->id_ciudad}" method="" ><button type="submit">Editar</form>
-                    <td>
-                    <td class="animated fadeIn">
-                      <a href="eventos/editar/{$evento->id_ciudad}" >Editar</a>
-                    <td>
+                      <button class="botonEditar" value="{$evento->id_evento}" type="submit">Editar</form>
+                    </td>
                   </tr>
           {/foreach}
         </tbody>
         </table>
 
-        <form action="eventos/insertar" method="post">
-            <input type="text" name="nombre" placeholder="Nombre">
-            <input type="text" name="fecha" placeholder="Fecha">
-            <input type="text" name="organizador" placeholder="Organizador">
-            <input type="text" name="ciudad" placeholder="Ciudad">
-            <input type="submit" value="Insertar">
+        <form id="FormUnico" action="eventos/insertar" method="post">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+            <input type="text" id="fecha" name="fecha" placeholder="Fecha">
+            <input type="text" id="organizador" name="organizador" placeholder="Organizador">
+            <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad">
+            <button type="submit" id="btnEnviar">Insertar</button>
         </form>
 {include file="footer.tpl"}

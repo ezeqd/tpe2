@@ -9,7 +9,7 @@ class EventosModel {
     }
 
     public function GetEventos(){
-        $sentencia = $this->db->prepare( "SELECT * FROM evento");
+        $sentencia = $this->db->prepare("SELECT * FROM evento");
         $sentencia->execute();
         $eventos = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $eventos;
@@ -28,7 +28,7 @@ class EventosModel {
     }
 
     public function EditarEvento($id,$nombre,$fecha,$organizador,$ciudad){
-        $sentencia = $this->db->prepare("UPDATE evento SET nombre=?, fecha=?, organizador=?, ciudad=? WHERE id_evento=?");
+        $sentencia = $this->db->prepare("UPDATE evento SET nombre=?, fecha=?, organizador=?, id_ciudad=? WHERE id_evento=?");
         $sentencia->execute(array($nombre,$fecha,$organizador,$ciudad,$id));
     }
 

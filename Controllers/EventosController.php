@@ -7,6 +7,7 @@ require_once "./Views/EventosView.php";
 class EventosController {
 
     private $model;
+    private $ciudadesmodel;
     private $userController;
     private $view;
 
@@ -38,15 +39,15 @@ class EventosController {
     }
 
     public function EditarEvento($id){
-        $this->checkLogIn();
-        $this->model->EditarEvento($id);
+        // $this->checkLogIn();
+        $this->model->EditarEvento($id, $_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
         header("Location: " . BASE_URL);
     }
 
     public function BorrarEvento($id){
         // $this->$userController->checkLogIn();
         $this->model->BorrarEvento($id);
-        // header("Location: " . BASE_URL);
+        header("Location: " . BASE_URL);
     }
 }
 ?>

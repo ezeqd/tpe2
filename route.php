@@ -28,6 +28,10 @@ else{
                 $eventosController->BorrarEvento($partesURL[2]);
                 // var_dump($partesURL[2]);
             }
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "editar")){
+                $eventosController->EditarEvento($partesURL[2]);
+                // var_dump($partesURL[2]);
+            }            
             else{
                 $eventosController->ShowEventos();
             }
