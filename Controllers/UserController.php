@@ -1,15 +1,18 @@
 <?php
 require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
+require_once "./helpers/authenticate.helper.php"
 
 class UserController {
 
     private $model;
     private $view;
+    private $authHelper;
 
 	function __construct(){
         $this->model = new UserModel();
         $this->view = new UserView();
+        $this->authHelper = new authHelper();
     }
     
     public function IniciarSesion(){
@@ -25,28 +28,11 @@ class UserController {
             $_SESSION['usuario'] = $usuario->email;
             $_SESSION['userId'] = $usuario->id_usuario;
             header("Location: " . URL_EVENTOS);
-        }else{
+        } else {
             $this->view->DisplayLogin("Error en inicio de Sesión");
         }
        // header("Location: " . BASE_URL);
     }
-
-    public function checkLogIn(){
-        session_start();
-        
-        if(!isset($_SESSION['userId'])){
-            header("Location: " . URL_LOGIN);
-            die();
-        }
-
-        if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 5000)) { 
-            header("Location: " . URL_LOGOUT);
-            die(); // destruye la sesión, y vuelve al login
-        } 
-        $_SESSION['LAST_ACTIVITY'] = time();
-    }
-
-
 
     public function ShowLogin(){
         $this->view->DisplayLogin();
