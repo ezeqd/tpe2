@@ -1,7 +1,7 @@
 <?php
 require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
-require_once "./helpers/authenticate.helper.php"
+require_once "./helpers/authenticate.helper.php";
 
 class UserController {
 
@@ -46,6 +46,4 @@ class UserController {
 
     
 }
-
-
 ?>
