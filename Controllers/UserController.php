@@ -1,7 +1,7 @@
 <?php
 require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
-require_once "./helpers/authenticate.helper.php";
+require_once "./Helpers/Authenticate.Helper.php";
 
 class UserController {
 
@@ -19,19 +19,28 @@ class UserController {
         $password = $_POST['password'];
 
         $usuario = $this->model->GetPassword($_POST['usuario']);
-        // $hash = password_hash($password, PASSWORD_DEFAULT);
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         // var_dump($hash);
         // var_dump($usuario);
 
-        if (isset($usuario) && $usuario != null && password_verify($password, $usuario->password)){
+        if (isset($usuario) && $usuario != null && password_verify($hash, $usuario->password)){
             session_start();
             $_SESSION['usuario'] = $usuario->email;
             $_SESSION['userId'] = $usuario->id_usuario;
             header("Location: " . URL_EVENTOS);
+            $this->view->DisplayLogin("Iniciaste Sesión re piola");
         } else {
             $this->view->DisplayLogin("Error en inicio de Sesión");
         }
        // header("Location: " . BASE_URL);
+    }
+
+    public function Register(){
+        $password = $_POST['password'];
+        $user = $_POST['usuario'];
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $model->SetUser($user, $password);
     }
 
     public function ShowLogin(){
@@ -43,6 +52,12 @@ class UserController {
         session_destroy();
         header("Location: " . URL_LOGIN);
     }
+
+    public function ShowRegister(){
+        $this->view->DisplayRegister();
+    }
+
+    
 
     
 }

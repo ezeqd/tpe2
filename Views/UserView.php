@@ -16,5 +16,12 @@ class UserView {
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/login.tpl');
     }
+
+    public function DisplayRegister($error = null){
+        $this->smarty->assign('titulo','Registrate');
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('BASE_URL',BASE_URL);
+        $this->smarty->display('templates/register.tpl');
+    }
 }
 ?>

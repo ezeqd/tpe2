@@ -48,6 +48,9 @@ else{
         elseif($partesURL[0] == "logout") {
             $userController->ShowLogout();
         }
+        elseif($partesURL[0] == "register") {
+            $userController->ShowRegister();
+        }
     }
 }
 ?>

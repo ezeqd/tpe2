@@ -15,6 +15,7 @@
               {* {if} *}
                   <div><form action="logout" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log out"></input></form></div>
               {* {/if} *}
+              <div><form action="register" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Register"></input></form></div>
             </header>
             <body>
             <h1>{$titulo}</h1>

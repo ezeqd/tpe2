@@ -9,13 +9,21 @@ class UserModel {
     }
 
     public function GetPassword($usuario){
-        $sentencia = $this->db->prepare( "SELECT * FROM usuario WHERE email = ?");
+        //acá irian unos try-catch
+        $sentencia = $this->db->prepare("SELECT * FROM usuario WHERE email = ?");
         $sentencia->execute(array($usuario));
         
         $password = $sentencia->fetch(PDO::FETCH_OBJ);
         
         return $password;
     }
+
+    public function SetUser($usuario, $pass){
+        $sentencia = $this->db->prepare("INSERT * INTO usuario(email, password) VALUES(?,?)");
+        $sentencia->execute(array($usuario,$pass));
+    }
+
+    
 }
 
 ?>
