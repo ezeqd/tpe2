@@ -51,6 +51,9 @@ else{
         elseif($partesURL[0] == "register") {
             $userController->ShowRegister();
         }
+        elseif($partesURL[0] == "newuser") {
+            $userController->Register();
+        }
     }
 }
 ?>

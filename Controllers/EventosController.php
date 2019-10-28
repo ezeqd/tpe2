@@ -29,7 +29,7 @@ class EventosController {
                 }
             }
         }
-        $this->view->DisplayEventos($eventos);
+        $this->view->DisplayEventos($eventos,$ciudades);
     }
 
     public function InsertarEvento(){

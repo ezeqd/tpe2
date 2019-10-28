@@ -1,0 +1,10 @@
+EZE
+navegar y visualizar cada item
+
+MARTIN
+ordenar por categorias
+checklogin booleano y adaptar tpl
+
+LOS 2
+categorias en form
+generar bd al principio

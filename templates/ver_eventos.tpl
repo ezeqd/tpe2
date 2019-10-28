@@ -15,7 +15,7 @@
                     <td id="nombre{$evento->id_evento}" class="animated fadeIn">{$evento->nombre}</td>
                     <td id="fecha{$evento->id_evento}"class="animated fadeIn">{$evento->fecha}</td>
                     <td id="organizador{$evento->id_evento}"class="animated fadeIn">{$evento->organizador}</td>
-                    <td id="ciudad{$evento->id_evento}" class="animated fadeIn">{$evento->ciudad}</td>
+                    <td id="ciudad{$evento->id_evento}" data-id="{$evento->id_ciudad}" class="animated fadeIn">{$evento->ciudad}</td>
                     <td class="animated fadeIn">
                       <form action="eventos/borrar/{$evento->id_evento}"><button type="submit">Borrar</form>
                     </td>
@@ -31,7 +31,11 @@
             <input type="text" id="nombre" name="nombre" placeholder="Nombre">
             <input type="text" id="fecha" name="fecha" placeholder="Fecha">
             <input type="text" id="organizador" name="organizador" placeholder="Organizador">
-            <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad">
+            <select type="text" id="ciudad" name="ciudad" placeholder="Ciudad">
+              {foreach from=$lista_ciudades item=ciudad}
+                <option value="{$ciudad->id_ciudad}">{$ciudad->nombre}</option>
+              {/foreach}
+            </select>
             <button type="submit" id="btnEnviar">Insertar</button>
         </form>
 {include file="footer.tpl"}
