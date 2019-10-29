@@ -6,6 +6,7 @@
             <th scope="col">Fecha</th>
             <th scope="col">Organizador</th>
             <th scope="col">Ciudad</th>
+            <th scope="col">Ver Detalles</th>
             {if isset($userName)}
               <th scope="col">Borrar</th>
               <th scope="col">Editar</th>
@@ -19,7 +20,7 @@
                  <td id="organizador{$evento->id_evento}"class="animated fadeIn">{$evento->organizador}</td>
                  <td id="ciudad{$evento->id_evento}" class="animated fadeIn"><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
 								<td class="animated fadeIn">
-									<form action="eventos/detalles/{$evento->id_evento}"><button value="{$evento->id_evento}" type="submit">Editar</button></form>
+									<form action="eventos/detalles/{$evento->id_evento}"><button value="{$evento->id_evento}" type="submit">Ver</button></form>
 								</td>
                  {if isset($userName)}
                    <td class="animated fadeIn">

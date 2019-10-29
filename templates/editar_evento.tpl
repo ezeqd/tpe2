@@ -1,13 +1,12 @@
 {include file="header.tpl"}
         {if isset($userName)}
-        {foreach from=$evento item=e}
-          <form id="FormUnico" action="eventos/editar/{$e->id_evento}" method="post">
-              <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="{$e->nombre}">
-              <input type="text" id="fecha" name="fecha" placeholder="Fecha" value="{$e->fecha}">
-              <input type="text" id="organizador" name="organizador" placeholder="Organizador" value="{$e->organizador}">
+          <form id="FormUnico" action="eventos/editar/{$evento->id_evento}" method="post">
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="{$evento->nombre}">
+              <input type="text" id="fecha" name="fecha" placeholder="Fecha" value="{$evento->fecha}">
+              <input type="text" id="organizador" name="organizador" placeholder="Organizador" value="{$evento->organizador}">
               <select type="text" id="ciudad" name="ciudad" placeholder="Ciudad">
                 {foreach from=$lista_ciudades item=ciudad}
-                  {if $e->id_ciudad==$ciudad->id_ciudad}
+                  {if $evento->id_ciudad==$ciudad->id_ciudad}
                     <option selected value="{$ciudad->id_ciudad}">{$ciudad->nombre}</option>
                   {else}
                     <option value="{$ciudad->id_ciudad}">{$ciudad->nombre}</option>
@@ -16,7 +15,6 @@
               </select>
               <button type="submit" id="btnEnviar">Guardar</button>
           </form>
-          {/foreach}
         {/if}
         <a href='{$BASE_URL}' >Volver al Inicio</a>
 {include file="footer.tpl"}

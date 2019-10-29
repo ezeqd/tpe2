@@ -53,7 +53,7 @@ class EventosController {
         $this->authHelper->checkLogIn();
         $evento = $this->model->GetEventoById($id);
         $ciudades = $this->ciudadesmodel->GetCiudades();
-        $this->view->DisplayDetallesEvento($evento,$ciudades,$id);
+        $this->view->DisplayDetallesEvento($evento,$ciudades);
     }
 
     public function EditarEvento($id){

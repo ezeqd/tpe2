@@ -19,7 +19,7 @@ class EventosModel {
         $sentencia = $this->db->prepare("SELECT evento.*,ciudad.nombre AS ciudad FROM evento JOIN ciudad ON evento.id_ciudad=ciudad.id_ciudad WHERE id_evento=?");
         $sentencia->execute(array($id));
         $evento = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $evento;        
+        return $evento[0];
     }
     
     public function GetEventosByIdCiudad($filter){
