@@ -2,7 +2,7 @@ EZE
 navegar y visualizar cada item
 
 MARTIN
-ordenar por categorias
+ordenar por categorias LISTO
 checklogin booleano y adaptar tpl
 
 LOS 2

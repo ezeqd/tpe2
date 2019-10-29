@@ -3,7 +3,7 @@ class authHelper {
 	
 	public function __construct() {}
 
-	public function login($user){
+	public function login($usuario){
 		session_start();
 		$_SESSION['userId'] = $usuario->id;
 		$_SESSION['usuario'] = $usuario->email;
@@ -29,11 +29,12 @@ class authHelper {
         $_SESSION['LAST_ACTIVITY'] = time();
     }
 
-    public function getLoggedUsername() {
-    	if(session_status() != PHP_SESSION_ACTIVE)
-    		session_start();
-    	return $_SESSION['usuario'];
-    }
+    public function getLoggedUserName() {
+		if (session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+		return $_SESSION['usuario'];	
+	}
+
 
 }
 ?>

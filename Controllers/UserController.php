@@ -23,13 +23,9 @@ class UserController {
         $password = $_POST['password'];
         $usuario = $this->model->GetPassword($_POST['usuario']);
  
-
         if (!empty($usuario) && password_verify($password, $usuario->password)){
-            session_start();
-            $_SESSION['usuario'] = $usuario->email;
-            $_SESSION['userId'] = $usuario->id_usuario;
+            $this->authHelper->login($usuario);
             header("Location: " . URL_EVENTOS);
-            //$this->view->DisplayLogin("Iniciaste Sesión re piola");
         } else {
             $this->view->DisplayLogin("Error en inicio de Sesión");
         }
@@ -50,7 +46,7 @@ class UserController {
         $user = $_POST['usuario'];
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        var_dump($hash);
+        // var_dump($hash);
         $this->model->SetUser($user, $hash);
         header("Location: " . URL_LOGIN);    
     }

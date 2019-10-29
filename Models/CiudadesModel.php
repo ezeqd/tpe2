@@ -15,6 +15,13 @@ class CiudadesModel {
         return $ciudades;
     }
 
+    public function GetIdCiudadByName($name){
+        $sentencia = $this->db->prepare( "SELECT id_ciudad from ciudad WHERE nombre=?");
+        $sentencia->execute(array($name));
+        $id_ciudad = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $id_ciudad;
+    }
+
     // public function InsertarEvento($nombre,$fecha,$organizador,$id_ciudad ){
 
     //     $sentencia = $this->db->prepare("INSERT INTO evento(nombre, fecha, organizador, id_ciudad) VALUES(?,?,?,?)");
