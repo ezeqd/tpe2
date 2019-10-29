@@ -46,7 +46,7 @@ class EventosController {
         $this->authHelper->checkLogIn();
         $evento = $this->model->GetEventoById($id);
         $ciudades = $this->ciudadesmodel->GetCiudades();
-        $this->view->DisplayEditarEvento($evento,$ciudades,$id);
+        $this->view->DisplayEditarEvento($evento,$ciudades);
     }
 
     public function EditarEvento($id){

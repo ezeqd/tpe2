@@ -20,9 +20,10 @@ class UserController {
     }
 
     public function IniciarSesion(){
+
         $password = $_POST['password'];
         $usuario = $this->model->GetPassword($_POST['usuario']);
- 
+
         if (!empty($usuario) && password_verify($password, $usuario->password)){
             $this->authHelper->login($usuario);
             header("Location: " . URL_EVENTOS);

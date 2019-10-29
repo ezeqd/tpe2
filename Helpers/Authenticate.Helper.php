@@ -3,10 +3,10 @@ class authHelper {
 	
 	public function __construct() {}
 
-	public function login($usuario){
+	public function login($user){
 		session_start();
-		$_SESSION['userId'] = $usuario->id;
-		$_SESSION['usuario'] = $usuario->email;
+		$_SESSION['userId'] = $user->id_usuario;
+		$_SESSION['usuario'] = $user->email;
 	}
 
 	public function logout(){
@@ -15,7 +15,7 @@ class authHelper {
 	}
 
 	public function checkLogIn(){
-        session_start();
+		// session_start();
         
         if(!isset($_SESSION['userId'])){
             header("Location: " . URL_LOGIN);
@@ -30,11 +30,11 @@ class authHelper {
     }
 
     public function getLoggedUserName() {
+		
 		if (session_status() != PHP_SESSION_ACTIVE)
-            session_start();
-		return $_SESSION['usuario'];	
+		session_start();
+		return $_SESSION['usuario'];
+		
 	}
-
-
 }
 ?>
