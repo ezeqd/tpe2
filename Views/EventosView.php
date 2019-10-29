@@ -29,7 +29,13 @@ class EventosView {
         $this->smarty->assign('evento',$evento);
         $this->smarty->assign('id',$id);
         $this->smarty->display('templates/editar_evento.tpl');
+    }
 
+    public function DisplayDetallesEvento($evento,$ciudades,$id){
+        $this->smarty->assign('titulo',"Detalles Evento");
+        $this->smarty->assign('evento',$evento);
+        $this->smarty->assign('id',$id);
+        $this->smarty->display('templates/detalles_evento.tpl');
     }
 }
 ?>

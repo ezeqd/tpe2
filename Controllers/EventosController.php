@@ -49,6 +49,13 @@ class EventosController {
         $this->view->DisplayEditarEvento($evento,$ciudades,$id);
     }
 
+    public function ShowDetallesEvento($id){
+        $this->authHelper->checkLogIn();
+        $evento = $this->model->GetEventoById($id);
+        $ciudades = $this->ciudadesmodel->GetCiudades();
+        $this->view->DisplayDetallesEvento($evento,$ciudades,$id);
+    }
+
     public function EditarEvento($id){
         $this->authHelper->checkLogIn();
         $this->model->EditarEvento($id, $_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
