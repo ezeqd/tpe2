@@ -43,20 +43,20 @@ class EventosController {
     }
 
     public function ShowEditarEvento($id){
-        // $this->authHelper->checkLogIn();
+        $this->authHelper->checkLogIn();
         $evento = $this->model->GetEventoById($id);
         $ciudades = $this->ciudadesmodel->GetCiudades();
         $this->view->DisplayEditarEvento($evento,$ciudades,$id);
     }
 
     public function EditarEvento($id){
-        // $this->$authHelper->checkLogIn();
+        $this->authHelper->checkLogIn();
         $this->model->EditarEvento($id, $_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
         header("Location: " . BASE_URL);
     }
 
     public function BorrarEvento($id){
-        $this->$authHelper->checkLogIn();
+        $this->authHelper->checkLogIn();
         $this->model->BorrarEvento($id);
         header("Location: " . BASE_URL);
     }
