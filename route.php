@@ -6,6 +6,7 @@ require_once ("Controllers/UserController.php");
 $action = $_GET["action"];
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 define("URL_EVENTOS", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/eventos');
+define("URL_CIUDADES", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/ciudades');
 define("URL_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
 define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
 
@@ -41,7 +42,21 @@ else{
             }
         }
         elseif($partesURL[0] == "ciudades") {
-            $ciudadesController->ShowCiudades();
+            if ((isset($partesURL[1]))&&($partesURL[1] == "insertar")){
+                $ciudadesController->InsertarCiudad();
+            }  
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "borrar")){
+                $ciudadesController->BorrarCiudad($partesURL[2]);
+            }
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "formeditar")){
+                $ciudadesController->ShowEditarCiudad($partesURL[2]);
+            }
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "editar")){
+                $ciudadesController->EditarCiudad($partesURL[2]);
+            }
+            else{
+                $ciudadesController->ShowCiudades();
+            }
         }
         elseif($partesURL[0] == "login") {
             $userController->ShowLogin();

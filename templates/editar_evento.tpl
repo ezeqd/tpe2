@@ -13,7 +13,7 @@
                   {/if}
                 {/foreach}
               </select>
-              <button type="submit" id="btnEnviar">Guardar</button>
+              <button type="submit">Guardar</button>
           </form>
         {/if}
         <a href='{$BASE_URL}' >Volver al Inicio</a>

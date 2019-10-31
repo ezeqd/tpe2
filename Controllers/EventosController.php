@@ -14,7 +14,6 @@ class EventosController {
 	function __construct(){
         $this->model = new EventosModel();
         $this->ciudadesmodel = new CiudadesModel();
-        $this->userController = new UserController();
         $this->view = new EventosView();
         $this->authHelper = new AuthHelper();
     }
@@ -50,7 +49,6 @@ class EventosController {
     }
 
     public function ShowDetallesEvento($id){
-        $this->authHelper->checkLogIn();
         $evento = $this->model->GetEventoById($id);
         $ciudades = $this->ciudadesmodel->GetCiudades();
         $this->view->DisplayDetallesEvento($evento,$ciudades);

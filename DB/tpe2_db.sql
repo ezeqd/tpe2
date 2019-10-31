@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2019 a las 00:10:48
+-- Tiempo de generación: 31-10-2019 a las 21:28:45
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -46,7 +46,8 @@ INSERT INTO `ciudad` (`id_ciudad`, `nombre`, `capacidad`) VALUES
 (5, 'Mendoza', 240000),
 (6, 'CABA', 12000),
 (7, 'Rosario', 16000),
-(8, 'Ayacucho', 17700);
+(8, 'Ayacucho', 17700),
+(9, 'Olavarria', 26000);
 
 -- --------------------------------------------------------
 
@@ -67,14 +68,10 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`) VALUES
-(1, 'Evento1', '2019-09-24', 'Nadie', 2),
-(2, 'Evento2', '2019-12-27', 'Organizador2', 5),
-(3, 'Evento3', '2019-12-27', 'Organizador2', 6),
-(4, 'Evento4', '2019-12-27', 'Organizador3', 2),
-(5, 'Evento5', '2019-12-27', 'Organizador2', 4),
-(6, 'dasd', '2019-09-02', '212', 1),
-(7, 'dasas', '0000-00-00', '212', 4),
-(8, '', '0000-00-00', '', 3);
+(2, 'Red Hot Chili Peppers', '2020-12-27', 'HTMS', 5),
+(8, 'Luciano Pereira', '2020-03-12', 'GRR', 1),
+(13, 'El Indio', '2019-09-10', 'HDD', 4),
+(14, 'Babasonicos', '2021-03-23', 'QWA', 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +82,7 @@ INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
-  `password` varchar(25) COLLATE utf8_bin NOT NULL
+  `password` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -93,9 +90,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`) VALUES
-(1, 'nadie@tpe2.com', 'hola'),
-(2, 'martin@tpe2.com', 'hola1'),
-(3, 'eze@tpe2.com', 'hola2');
+(1, 'nadie@tpe2.com', '$2y$10$XUbrWPtjwGQwoG8spEtlC.98WSFoqLKmgjOVHuCF9y8fiXWKttv2.'),
+(5, 'profe@tpe2.com', '$2y$10$dOP3bFO1IRuRsAJTSd1MO.e9PyNgFjAVcXupckMVE4nS6cwctSexi'),
+(6, 'a@tpe2.com', '$2y$10$4Mz0UYp9GS/eBqjlNTC3c.IWCOOPidx8NT1TzfZFDEAaHqkpJOgd6'),
+(7, 'b@tpe2.com', '$2y$10$1ghkoLoWIVA9g.cdD/Js0eFA/uHPDN1Mzqv.57N9qSMWlUi6ehjCy');
 
 --
 -- Índices para tablas volcadas
@@ -128,19 +126,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

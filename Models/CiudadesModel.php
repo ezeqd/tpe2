@@ -22,16 +22,28 @@ class CiudadesModel {
         return $id_ciudad;
     }
 
-    // public function InsertarEvento($nombre,$fecha,$organizador,$id_ciudad ){
+    public function GetCiudadById($id){
+        $sentencia = $this->db->prepare("SELECT * FROM ciudad WHERE id_ciudad=?");
+        $sentencia->execute(array($id));
+        $evento = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $evento[0];
+    }
 
-    //     $sentencia = $this->db->prepare("INSERT INTO evento(nombre, fecha, organizador, id_ciudad) VALUES(?,?,?,?)");
-    //     $sentencia->execute(array($nombre,$fecha,$organizador,$id_ciudad));
-    // }
+    public function InsertarCiudad($nombre,$capacidad){
+        $sentencia = $this->db->prepare("INSERT INTO ciudad(nombre, capacidad) VALUES(?,?)");
+        $sentencia->execute(array($nombre,$capacidad));
+    }
 
-    // public function BorrarEvento($id){
-    //     $sentencia = $this->db->prepare("DELETE FROM evento WHERE id=?");
-    //     $sentencia->execute(array($id));
-    // }
+    public function EditarCiudad($id,$nombre,$capacidad){
+        $sentencia = $this->db->prepare("UPDATE ciudad SET nombre=?, capacidad=? WHERE id_ciudad=?");
+        $sentencia->execute(array($nombre,$capacidad,$id));
+    }
+
+    public function BorrarCiudad($id){
+        $sentencia = $this->db->prepare("DELETE FROM ciudad WHERE id_ciudad=?");
+        $sentencia->execute(array($id));
+    }
+
 }
 
 ?>
