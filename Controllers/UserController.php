@@ -3,7 +3,7 @@ require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
 require_once "./Helpers/Authenticate.Helper.php";
 
-class UserController {
+class UserController { // login controller
 
     private $model;
     private $view;
