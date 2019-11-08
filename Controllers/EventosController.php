@@ -1,6 +1,7 @@
 <?php
 require_once "./Models/EventosModel.php";
 require_once "./Models/CiudadesModel.php";
+require_once "./Models/ImagenesModel.php";
 require_once "./Helpers/Authenticate.Helper.php";
 require_once "./Views/EventosView.php";
 
@@ -8,12 +9,14 @@ class EventosController {
 
     private $model;
     private $ciudadesmodel;
+    private $imagenesModel;
     private $view;
     private $authHelper;
 
 	function __construct(){
         $this->model = new EventosModel();
         $this->ciudadesmodel = new CiudadesModel();
+        $this->imagenesmodel = new ImagenesModel();
         $this->view = new EventosView();
         $this->authHelper = new AuthHelper();
     }
@@ -38,6 +41,9 @@ class EventosController {
     public function InsertarEvento(){
         $this->authHelper->checkLogIn();
         $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
+        // if ($_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/png"){
+            $this->imagenesmodel->InsertarImagen($_FILES['imagen']);
+        // }
         header("Location: " . BASE_URL);
     }
 

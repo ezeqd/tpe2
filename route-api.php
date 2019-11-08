@@ -1,7 +1,7 @@
 <?php
 
 require_once ("Router.php");
-require_once ("api/EventosApiController.php");
+require_once ("api/ComentariosApiController.php");
 require_once ("api/CiudadesApiController.php");
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -16,10 +16,10 @@ $method = $_SERVER["REQUEST_METHOD"];
 $router = new Router();
 
 // arma la tabla de ruteo
-$router->addRoute("eventos", "GET", "EventosApiController", "ShowEventos");
-$router->addRoute("ciudades", "GET", "CiudadesApiController", "ShowCiudades");
-$router->addRoute("eventos", "POST", "EventosApiController", "InsertarEvento");
-$router->addRoute("eventos/borrar/:ID", "DELETE", "EventosApiController", "BorrarEvento");
+// $router->addRoute("eventos", "GET", "EventosApiController", "ShowEventos");
+// $router->addRoute("ciudades", "GET", "CiudadesApiController", "ShowCiudades");
+$router->addRoute("comentarios", "POST", "ComentariosApiController", "InsertarComentario");
+// $router->addRoute("eventos/borrar/:ID", "DELETE", "EventosApiController", "BorrarEvento");
 // $router->addRoute("tareas/:ID", "PUT", "TareasApiController", "updateTask");
 
 

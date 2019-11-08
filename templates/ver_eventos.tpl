@@ -36,7 +36,7 @@
         </tbody>
         </table>
         {if isset($userName)}
-          <form action="eventos/insertar" method="post">
+          <form action="eventos/insertar" method="post" enctype="multipart/form-data">
               <input type="text" id="nombre" name="nombre" placeholder="Nombre">
               <input type="text" id="fecha" name="fecha" placeholder="Fecha">
               <input type="text" id="organizador" name="organizador" placeholder="Organizador">
@@ -45,6 +45,7 @@
                   <option value="{$ciudad->id_ciudad}">{$ciudad->nombre}</option>
                 {/foreach}
               </select>
+              <input type="file" id="imagen" name="imagen" placeholder="Imagen">
               <button type="submit" id="btnEnviar">Insertar</button>
           </form>
         {/if}
