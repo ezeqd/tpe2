@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2019 a las 21:28:45
+-- Tiempo de generación: 08-11-2019 a las 21:43:10
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -45,9 +45,31 @@ INSERT INTO `ciudad` (`id_ciudad`, `nombre`, `capacidad`) VALUES
 (4, 'Mar del Plata', 300000),
 (5, 'Mendoza', 240000),
 (6, 'CABA', 12000),
-(7, 'Rosario', 16000),
 (8, 'Ayacucho', 17700),
-(9, 'Olavarria', 26000);
+(10, 'd', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `comentario` varchar(255) NOT NULL,
+  `puntaje` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_comentario`, `id_usuario`, `comentario`, `puntaje`) VALUES
+(1, 6, 'Prueba', 1),
+(2, 6, 'Prueba2', 1),
+(3, 6, 'Prueba3', 1),
+(4, 6, 'Prueba4', 1);
 
 -- --------------------------------------------------------
 
@@ -71,7 +93,48 @@ INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`
 (2, 'Red Hot Chili Peppers', '2020-12-27', 'HTMS', 5),
 (8, 'Luciano Pereira', '2020-03-12', 'GRR', 1),
 (13, 'El Indio', '2019-09-10', 'HDD', 4),
-(14, 'Babasonicos', '2021-03-23', 'QWA', 1);
+(14, 'Babasonicos', '2021-03-23', 'QWA', 1),
+(15, 'AAA', '2019-11-12', 'fff', 3),
+(24, 'EEE', '0000-00-00', '111', 1),
+(25, '132', '0000-00-00', '', 1),
+(26, '11111', '0000-00-00', '', 1),
+(27, '2222', '0000-00-00', '', 1),
+(28, '3333', '0000-00-00', '', 1),
+(29, 'S', '0000-00-00', '', 1),
+(30, 'DD', '0000-00-00', '', 1),
+(31, 'DD', '0000-00-00', '', 1),
+(32, 'DD', '0000-00-00', '', 1),
+(33, 'DD', '0000-00-00', '', 1),
+(34, 'DD', '0000-00-00', '', 1),
+(35, 'DD', '0000-00-00', '', 1),
+(36, '11', '0000-00-00', '', 1),
+(37, '11', '0000-00-00', '', 1),
+(38, '1112', '0000-00-00', '', 1),
+(39, '11', '0000-00-00', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `id_imagen` int(11) NOT NULL,
+  `url_imagen` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id_imagen`, `url_imagen`) VALUES
+(1, 'imagenes/eventos/5dc5c91828353.'),
+(2, 'imagenes/eventos/5dc5c96d0b82a.'),
+(3, 'imagenes/eventos/5dc5c98d42514.'),
+(4, 'imagenes/eventos/5dc5c99a7103d.'),
+(5, 'imagenes/eventos/5dc5c9ca15db5.jpg'),
+(6, 'imagenes/eventos/5dc5c9dd7032e.jpg'),
+(7, 'imagenes/eventos/5dc5c9f2d9171.jpg');
 
 -- --------------------------------------------------------
 
@@ -106,11 +169,24 @@ ALTER TABLE `ciudad`
   ADD PRIMARY KEY (`id_ciudad`);
 
 --
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`id_evento`),
   ADD KEY `ciudades` (`id_ciudad`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id_imagen`);
 
 --
 -- Indices de la tabla `usuario`
@@ -129,10 +205,22 @@ ALTER TABLE `ciudad`
   MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -143,6 +231,12 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `evento`

@@ -15,6 +15,18 @@ class ComentariosApiController extends ApiController{
         $this->view->response($comentarios, 200);
     }
 
+    public function getComentario($params = null) {
+        // obtiene el parametro de la ruta
+        $id = $params[':ID'];
+        
+        $comentario = $this->model->GetComentarioById($id);
+        
+        if ($comentario) {
+            $this->view->response($comentario, 200);   
+        } else {
+            $this->view->response("No existe la tarea con el id={$id}", 404);
+        }
+    }
 
     public function InsertarComentario(){
         // $this->authHelper->checkLogIn();
@@ -24,7 +36,7 @@ class ComentariosApiController extends ApiController{
         $comentarioId = $this->model->InsertarComentario($comentario->id_usuario,$comentario->comentario,$comentario->puntaje);
 
         // obtengo la recien creada
-        $comentarioNuevo = $this->model->GetComentario($comentarioId);
+        $comentarioNuevo = $this->model->GetComentarioById($comentarioId);
         
         if ($comentarioNuevo)
             $this->view->response($comentarioNuevo, 200);
