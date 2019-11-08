@@ -1,5 +1,5 @@
 <?php
-require_once("./Models/EventosModel.php");
+require_once("./Models/ComentariosModel.php");
 require_once("./api/ApiController.php");
 require_once("./api/JSONView.php");
 
@@ -17,7 +17,7 @@ class ComentariosApiController extends ApiController{
 
 
     public function InsertarComentario(){
-        $this->authHelper->checkLogIn();
+        // $this->authHelper->checkLogIn();
         $comentario = $this->getData(); // la obtengo del body
 
         // inserta evento
