@@ -9,7 +9,7 @@ class EventosController {
 
     private $model;
     private $ciudadesmodel;
-    private $imagenesModel;
+    private $imagenesmodel;
     private $view;
     private $authHelper;
 
@@ -40,11 +40,11 @@ class EventosController {
 
     public function InsertarEvento(){
         $this->authHelper->checkLogIn();
-        $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
+        $id = $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
         // if ($_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/png"){
-            $this->imagenesmodel->InsertarImagen($_FILES['imagen']);
-        // }
-        header("Location: " . BASE_URL);
+            $this->imagenesmodel->InsertarImagen($_FILES['imagen'],$id);
+            // }
+        header("Location: " . URL_EVENTOS . "/detalles/" . $id);
     }
 
     public function ShowEditarEvento($id){
@@ -56,8 +56,8 @@ class EventosController {
 
     public function ShowDetallesEvento($id){
         $evento = $this->model->GetEventoById($id);
-        $ciudades = $this->ciudadesmodel->GetCiudades();
-        $this->view->DisplayDetallesEvento($evento,$ciudades);
+        $imagenes = $this->imagenesmodel->GetImagenes($id);
+        $this->view->DisplayDetallesEvento($evento,$imagenes);
     }
 
     public function EditarEvento($id){

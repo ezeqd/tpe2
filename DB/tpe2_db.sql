@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2019 a las 21:43:10
+-- Tiempo de generación: 12-11-2019 a las 15:53:31
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -57,6 +57,7 @@ INSERT INTO `ciudad` (`id_ciudad`, `nombre`, `capacidad`) VALUES
 CREATE TABLE `comentario` (
   `id_comentario` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
   `comentario` varchar(255) NOT NULL,
   `puntaje` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -65,11 +66,19 @@ CREATE TABLE `comentario` (
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO `comentario` (`id_comentario`, `id_usuario`, `comentario`, `puntaje`) VALUES
-(1, 6, 'Prueba', 1),
-(2, 6, 'Prueba2', 1),
-(3, 6, 'Prueba3', 1),
-(4, 6, 'Prueba4', 1);
+INSERT INTO `comentario` (`id_comentario`, `id_usuario`, `id_evento`, `comentario`, `puntaje`) VALUES
+(1, 6, 2, 'Prueba', 1),
+(2, 6, 2, 'Prueba2', 1),
+(3, 6, 2, 'Prueba3', 1),
+(4, 6, 2, 'Prueba4', 1),
+(5, 6, 2, 'Prueba5', 1),
+(6, 6, 2, 'Prueba5', 1),
+(7, 6, 2, 'Prueba5', 1),
+(8, 6, 2, 'Prueba5', 1),
+(9, 6, 2, 'Prueba5', 1),
+(10, 6, 2, 'Prueba5', 1),
+(11, 6, 2, 'Prueba6', 1),
+(12, 6, 2, 'Prueba6', 1);
 
 -- --------------------------------------------------------
 
@@ -92,25 +101,9 @@ CREATE TABLE `evento` (
 INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`) VALUES
 (2, 'Red Hot Chili Peppers', '2020-12-27', 'HTMS', 5),
 (8, 'Luciano Pereira', '2020-03-12', 'GRR', 1),
-(13, 'El Indio', '2019-09-10', 'HDD', 4),
-(14, 'Babasonicos', '2021-03-23', 'QWA', 1),
-(15, 'AAA', '2019-11-12', 'fff', 3),
-(24, 'EEE', '0000-00-00', '111', 1),
-(25, '132', '0000-00-00', '', 1),
-(26, '11111', '0000-00-00', '', 1),
-(27, '2222', '0000-00-00', '', 1),
-(28, '3333', '0000-00-00', '', 1),
-(29, 'S', '0000-00-00', '', 1),
-(30, 'DD', '0000-00-00', '', 1),
-(31, 'DD', '0000-00-00', '', 1),
-(32, 'DD', '0000-00-00', '', 1),
-(33, 'DD', '0000-00-00', '', 1),
-(34, 'DD', '0000-00-00', '', 1),
-(35, 'DD', '0000-00-00', '', 1),
-(36, '11', '0000-00-00', '', 1),
-(37, '11', '0000-00-00', '', 1),
-(38, '1112', '0000-00-00', '', 1),
-(39, '11', '0000-00-00', '', 1);
+(15, 'Calvin Harris', '2019-11-11', 'TR', 3),
+(43, 'Martin', '0000-00-00', '123', 1),
+(44, 'Martin', '0000-00-00', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -120,6 +113,7 @@ INSERT INTO `evento` (`id_evento`, `nombre`, `fecha`, `organizador`, `id_ciudad`
 
 CREATE TABLE `imagen` (
   `id_imagen` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
   `url_imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -127,14 +121,8 @@ CREATE TABLE `imagen` (
 -- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` (`id_imagen`, `url_imagen`) VALUES
-(1, 'imagenes/eventos/5dc5c91828353.'),
-(2, 'imagenes/eventos/5dc5c96d0b82a.'),
-(3, 'imagenes/eventos/5dc5c98d42514.'),
-(4, 'imagenes/eventos/5dc5c99a7103d.'),
-(5, 'imagenes/eventos/5dc5c9ca15db5.jpg'),
-(6, 'imagenes/eventos/5dc5c9dd7032e.jpg'),
-(7, 'imagenes/eventos/5dc5c9f2d9171.jpg');
+INSERT INTO `imagen` (`id_imagen`, `id_evento`, `url_imagen`) VALUES
+(15, 2, 'imagenes/eventos/5dcac61541b97.jpeg');
 
 -- --------------------------------------------------------
 
@@ -173,7 +161,9 @@ ALTER TABLE `ciudad`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_evento` (`id_evento`),
+  ADD KEY `id_usuario_2` (`id_usuario`);
 
 --
 -- Indices de la tabla `evento`
@@ -186,7 +176,8 @@ ALTER TABLE `evento`
 -- Indices de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`id_imagen`);
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_evento` (`id_evento`);
 
 --
 -- Indices de la tabla `usuario`
@@ -208,19 +199,19 @@ ALTER TABLE `ciudad`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -236,13 +227,20 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`),
+  ADD CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `evento`
 --
 ALTER TABLE `evento`
   ADD CONSTRAINT `ciudades` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`);
+
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

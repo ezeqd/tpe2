@@ -10,17 +10,24 @@ class ComentariosApiController extends ApiController{
         $this->model = new ComentariosModel();        
     }
 
-    public function ShowComentarios(){
-        $comentarios = $this->model->getComentarios();
+    public function ShowComentarios($params = null){
+        if(isset($params)){
+            $id = $params[':ID'];
+            $comentarios = $this->model->GetComentarios($id);
+        }
+        else {
+            $comentarios = $this->model->GetComentarios();
+        }
         $this->view->response($comentarios, 200);
     }
 
-    public function getComentario($params = null) {
+    public function GetComentario($params = null) {
         // obtiene el parametro de la ruta
-        $id = $params[':ID'];
         
-        $comentario = $this->model->GetComentarioById($id);
-        
+        if(isset($params)){
+            $id = $params[':ID'];
+            $comentario = $this->model->GetComentarioById($id);
+        }
         if ($comentario) {
             $this->view->response($comentario, 200);   
         } else {
@@ -44,11 +51,17 @@ class ComentariosApiController extends ApiController{
             $this->view->response("Error al insertar el comentario", 500);
     }
 
-    public function BorrarComentario($id){
-        $this->authHelper->checkLogIn();
-        $this->model->BorrarComentario($id);
-        header("Location: " . BASE_URL);
+    public function BorrarComentario($params){
+        // $this->authHelper->checkLogIn();
+        // $this->authHelper->checkAdmin();
+        $id = $params[':ID'];
+        $comentario = $this->model->GetComentarioById($id);
+
+        if ($comentario) {
+            $this->model->BorrarComentario($id);
+            $this->view->response("Comentario id=$id eliminado con éxito", 200);
+        }
+        else 
+            $this->view->response("Comentario id=$id not found", 404);
     }
-
-
 }

@@ -1,6 +1,7 @@
 <?php
 require_once ("Controllers/EventosController.php");
 require_once ("Controllers/CiudadesController.php");
+require_once ("Controllers/ImagenesController.php");
 require_once ("Controllers/UserController.php");
 
 $action = $_GET["action"];
@@ -12,6 +13,7 @@ define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT
 
 $eventosController = new EventosController();
 $ciudadesController = new CiudadesController();
+$imagenesController = new ImagenesController();
 $userController = new userController();
 
 if($action == ''){
@@ -56,6 +58,14 @@ else{
             }
             else{
                 $ciudadesController->ShowCiudades();
+            }
+        }
+        elseif($partesURL[0] == "imagenes") {
+            if ((isset($partesURL[1]))&&($partesURL[1] == "insertar")){
+                $imagenesController->InsertarImagen();
+            }  
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "borrar")){
+                $imagenesController->BorrarImagen($partesURL[2]);
             }
         }
         elseif($partesURL[0] == "login") {

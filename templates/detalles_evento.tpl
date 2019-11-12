@@ -29,6 +29,21 @@
                </tr>
         </tbody>
         </table>
+        {if isset($imagenes)}
+          {foreach from=$imagenes item=imagen}
+            <div>
+              <img src="{$imagen->url_imagen}"/>
+              <form action="imagenes/borrar/{$imagen->id_imagen}" method="POST" ><input type="hidden" name="id" value="{$evento->id_evento}"><button type="submit">Borrar</button></form>
+            </div>
+          {/foreach}
+        {/if}
+        {if isset($userName)}
+          <form action="imagenes/insertar" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{$evento->id_evento}">
+          <input type="file" id="imagen" name="imagen" placeholder="Imagen">
+              <button type="submit" id="btnEnviar">Insertar</button>
+          </form>
+        {/if}
         {literal}
           <div id="app">
 

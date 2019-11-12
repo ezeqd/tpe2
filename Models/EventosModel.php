@@ -32,6 +32,7 @@ class EventosModel {
     public function InsertarEvento($nombre,$fecha,$organizador,$id_ciudad ){
         $sentencia = $this->db->prepare("INSERT INTO evento(nombre, fecha, organizador, id_ciudad) VALUES(?,?,?,?)");
         $sentencia->execute(array($nombre,$fecha,$organizador,$id_ciudad));
+        return $this->db->lastInsertId();
     }
 
     public function EditarEvento($id,$nombre,$fecha,$organizador,$ciudad){
