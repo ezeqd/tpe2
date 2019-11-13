@@ -8,7 +8,7 @@ class UserModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe2_db;charset=utf8', 'root', '');
     }
 
-    public function GetPassword($usuario){
+    public function GetUsuario($usuario){
         //acá irian unos try-catch
         $sentencia = $this->db->prepare("SELECT * FROM usuario WHERE email = ?");
         $sentencia->execute(array($usuario));

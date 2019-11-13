@@ -3,6 +3,8 @@ require_once ("Controllers/EventosController.php");
 require_once ("Controllers/CiudadesController.php");
 require_once ("Controllers/ImagenesController.php");
 require_once ("Controllers/UserController.php");
+require_once ("Controllers/LoginController.php");
+
 
 $action = $_GET["action"];
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -14,7 +16,8 @@ define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT
 $eventosController = new EventosController();
 $ciudadesController = new CiudadesController();
 $imagenesController = new ImagenesController();
-$userController = new userController();
+$userController = new UserController();
+$loginController = new LoginController();
 
 if($action == ''){
     $eventosController->ShowEventos();
@@ -69,13 +72,13 @@ else{
             }
         }
         elseif($partesURL[0] == "login") {
-            $userController->ShowLogin();
+            $loginController->ShowLogin();
         }
         elseif($partesURL[0] == "iniciarsesion") {
-            $userController->IniciarSesion();
+            $loginController->IniciarSesion();
         }
         elseif($partesURL[0] == "logout") {
-            $userController->ShowLogout();
+            $loginController->ShowLogout();
         }
         elseif($partesURL[0] == "register") {
             $userController->ShowRegister();
