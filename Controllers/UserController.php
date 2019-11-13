@@ -9,12 +9,19 @@ class UserController {
     private $view;
     private $authHelper;
 
+
 	function __construct(){
         $this->model = new UserModel();
         $this->view = new UserView();
         $this->authHelper = new authHelper();
     }
     
+    public function SwitchAdmin($email){
+        $this->authHelper->CheckLoginAdmin();
+        $usuario = $this->model->GetUsuario($email);
+        $this->model->SwitchAdmin($usuario);
+    }
+
     public function ShowRegister(){
         $this->view->DisplayRegister();
     }

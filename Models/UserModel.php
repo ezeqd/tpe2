@@ -18,15 +18,14 @@ class UserModel {
         return $usuario;
     }
 
-    public function SwitchAdmin ($email){
+    public function SwitchAdmin ($usuario){
         // FALTA PROBARLO
-        $usuario = $this->GetUsuario($email);
         $sentencia = $this->db->prepare("UPDATE usuario SET admin=? FROM usuario WHERE email=?");
         if ($usuario->admin){
-            $sentencia->execute(array(0,$usuario));
+            $sentencia->execute(array(0,$usuario->email));
         }
         else{
-            $sentencia->execute(array(1,$usuario));
+            $sentencia->execute(array(1,$usuario->email));
         }
     }
 

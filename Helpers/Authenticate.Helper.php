@@ -27,7 +27,14 @@ class authHelper {
             die();
         } 
         $_SESSION['LAST_ACTIVITY'] = time();
-    }
+	}
+	
+	public function CheckLoginAdmin(){
+		$this->checkLogIn();
+		if (!$_SESSION['admin']){
+			$this->logout();
+		}
+	}
 
     public function getLoggedUserName() {
 		

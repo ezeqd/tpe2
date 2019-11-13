@@ -52,8 +52,7 @@ class ComentariosApiController extends ApiController{
     }
 
     public function BorrarComentario($params){
-        // $this->authHelper->checkLogIn();
-        // $this->authHelper->checkAdmin();
+        // $this->authHelper->CheckLoginAdmin();
         $id = $params[':ID'];
         $comentario = $this->model->GetComentarioById($id);
 
