@@ -41,9 +41,9 @@ class EventosController {
     public function InsertarEvento(){
         $this->authHelper->checkLogIn();
         $id = $this->model->InsertarEvento($_POST['nombre'],$_POST['fecha'],$_POST['organizador'],$_POST['ciudad']);
-        // if ($_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/png"){
+        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
             $this->imagenesmodel->InsertarImagen($_FILES['imagen'],$id);
-            // }
+        }
         header("Location: " . URL_EVENTOS . "/detalles/" . $id);
     }
 

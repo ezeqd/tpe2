@@ -33,15 +33,15 @@ class ImagenesController {
     public function InsertarImagen(){
     //     $this->authHelper->checkLogIn();
         $id = $_POST['id'];
-        // if ($_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/png"){
+        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
             $this->model->InsertarImagen($_FILES['imagen'],$id);
-            // }
+        }
         header("Location: " . URL_EVENTOS . "/detalles/".$id);
     }
 
     public function BorrarImagen($id){
-        $id_evento = $_POST['id'];
         // $this->authHelper->checkLogIn();
+        $id_evento = $_POST['id'];
         $this->model->BorrarImagen($id);
         header("Location: " . URL_EVENTOS . "/detalles/". $id_evento);
     }
