@@ -1,0 +1,3 @@
+Deberíamos? 
+	- crear otro helper para chequear si un user es admin?
+	- tener un template de errores?
