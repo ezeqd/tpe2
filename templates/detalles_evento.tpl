@@ -13,11 +13,11 @@
           </tr>
         </thead>
           <tbody>
-               <tr>
-                 <td id="nombre{$evento->id_evento}" class="animated fadeIn">{$evento->nombre}</td>
-                 <td id="fecha{$evento->id_evento}"class="animated fadeIn">{$evento->fecha}</td>
-                 <td id="organizador{$evento->id_evento}"class="animated fadeIn">{$evento->organizador}</td>
-                 <td id="ciudad{$evento->id_evento}" class="animated fadeIn"><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
+               <tr id="evento" data-id="{$evento->id_evento}">
+                 <td class="animated fadeIn">{$evento->nombre}</td>
+                 <td class="animated fadeIn">{$evento->fecha}</td>
+                 <td class="animated fadeIn">{$evento->organizador}</td>
+                 <td class="animated fadeIn"><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
                  {if isset($userName)}
                    <td class="animated fadeIn">
                      <form action="eventos/borrar/{$evento->id_evento}"><button type="submit">Borrar</button></form>
@@ -44,10 +44,6 @@
               <button type="submit" id="btnEnviar">Insertar</button>
           </form>
         {/if}
-        {literal}
-          <div id="app">
-
-          </div>
-        {/literal}
-        <script src="assets/js/vue.js"></script>
+        {include file="vue/comentarios.tpl"}
+    <script src="assets/js/vue.js"></script>
 	</body>

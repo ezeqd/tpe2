@@ -17,9 +17,15 @@ class UserController {
     }
     
     public function SwitchAdmin($email){
-        $this->authHelper->CheckLoginAdmin();
-        $usuario = $this->model->GetUsuario($email);
-        $this->model->SwitchAdmin($usuario);
+        $admin = $this->authHelper->CheckLogInAdmin();
+        if (!$admin){
+            $this->view->DisplayLogin("Logearse como Administrador");
+        }
+        else{
+            $usuario = $this->model->GetUsuario($email);
+            $admin = !$usuario->admin;
+            $this->model->SwitchAdmin($admin,$usuario);
+        }
     }
 
     public function ShowRegister(){

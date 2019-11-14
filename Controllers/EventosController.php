@@ -21,7 +21,7 @@ class EventosController {
         $this->authHelper = new AuthHelper();
     }
 
-    public function ShowEventos(){
+    public function ShowEventos($error = null){
         $filter = null;
         $filterId = null;
         $id = null;
@@ -35,7 +35,7 @@ class EventosController {
             $eventos = $this->model->GetEventos();
         }
         $ciudades = $this->ciudadesmodel->GetCiudades();
-        $this->view->DisplayEventos($eventos,$ciudades);
+        $this->view->DisplayEventos($eventos,$ciudades,$error);
     }
 
     public function InsertarEvento(){

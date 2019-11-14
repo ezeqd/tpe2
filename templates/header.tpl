@@ -6,6 +6,7 @@
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <base href='{$BASE_URL}' >
                 <title>{$titulo}</title>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
             </head>
             <header>
               <div class="logo"></div>
@@ -16,6 +17,9 @@
                     <h1>Hola Invitado</h1>
                     <div><form action="login" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log in"></input></form></div>
                     <div><form action="register" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Register"></input></form></div>
+                {/if}
+                {if isset($error)   }
+                    <div>{$error}</div>
                 {/if}
             </header>
             <body>

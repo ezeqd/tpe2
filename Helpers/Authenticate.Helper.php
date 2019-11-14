@@ -9,6 +9,7 @@ class authHelper {
 	public function login($user){
 		$_SESSION['userId'] = $user->id_usuario;
 		$_SESSION['usuario'] = $user->email;
+		$_SESSION['admin'] = $user->admin;
 	}
 
 	public function logout(){
@@ -29,10 +30,13 @@ class authHelper {
         $_SESSION['LAST_ACTIVITY'] = time();
 	}
 	
-	public function CheckLoginAdmin(){
+	public function CheckLogInAdmin(){
 		$this->checkLogIn();
 		if (!$_SESSION['admin']){
-			$this->logout();
+			return false;
+		}
+		else{
+			return true;
 		}
 	}
 

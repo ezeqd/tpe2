@@ -12,8 +12,4 @@
   <p><input type="submit" class="button expanded" value="Log in"></p>
   <p class="text-center"><a href="#">Forgot your password?</a></p>
 </form>
-
-{if $error}
-<div>{$error}</div>
-{/if}
 {include file="footer.tpl"}

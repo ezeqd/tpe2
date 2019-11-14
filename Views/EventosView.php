@@ -16,10 +16,11 @@ class EventosView {
         $this->smarty->assign('userName', $this->userName);
     }
     
-    public function DisplayEventos($eventos,$ciudades){
+    public function DisplayEventos($eventos,$ciudades,$error = null){
         $this->smarty->assign('titulo',"Mostrar Eventos");
         $this->smarty->assign('lista_ciudades',$ciudades);
         $this->smarty->assign('lista_eventos',$eventos);
+        $this->smarty->assign('error',$error);
         $this->smarty->display('templates/ver_eventos.tpl');
     }
 

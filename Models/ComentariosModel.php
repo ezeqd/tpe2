@@ -10,7 +10,7 @@ class ComentariosModel {
 
     public function GetComentarios($id = null){
         if(isset($id)){
-            $sentencia = $this->db->prepare("SELECT * FROM comentario WHERE id_evento=?");
+            $sentencia = $this->db->prepare("SELECT comentario.*,usuario.email AS usuario FROM comentario JOIN usuario ON comentario.id_usuario=usuario.id_usuario WHERE id_evento=?");
             $sentencia->execute(array($id));
         }
         else {
