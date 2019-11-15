@@ -18,7 +18,7 @@
                     <div><form action="login" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log in"></input></form></div>
                     <div><form action="register" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Register"></input></form></div>
                 {/if}
-                {if isset($error)   }
+                {if isset($error)}
                     <div>{$error}</div>
                 {/if}
             </header>

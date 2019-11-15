@@ -40,7 +40,7 @@ class ComentariosApiController extends ApiController{
         $comentario = $this->getData(); // la obtengo del body
 
         // inserta evento
-        $comentarioId = $this->model->InsertarComentario($comentario->id_usuario,$comentario->comentario,$comentario->puntaje);
+        $comentarioId = $this->model->InsertarComentario($comentario->id_usuario,$comentario->id_evento,$comentario->comentario,$comentario->puntaje);
 
         // obtengo la recien creada
         $comentarioNuevo = $this->model->GetComentarioById($comentarioId);

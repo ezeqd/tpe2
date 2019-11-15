@@ -1,6 +1,6 @@
 "use strict"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     let app = new Vue ({
         el: '#app',
         data: {
@@ -10,27 +10,56 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     GetComentarios();
-
-    function GetComentarios() {
+    
+    async function GetComentarios() {
         let idEvento = document.getElementById("evento").dataset.id;
-        fetch("api/comentarios/eventos/"+idEvento)
-        .then(response => response.json())
-        .then(comentarios => {
-            app.comentarios = comentarios; // similar a $this->smarty->assign("tasks", $tasks)
-        }).then(AsignarEventListener)
-        .catch(error => console.log(error));
+        let r = await fetch("api/comentarios/eventos/"+idEvento)
+        let json = await r.json();
+        app.comentarios = await json;
+        setTimeout(AsignarEventListener,0);
+        // catch(error => console.log(error));
     }
     
-    function AsignarEventListener(){
+    async function AsignarEventListener(){
         let botonesBorrar = document.querySelectorAll(".botonBorrar");
         for (let botonBorrar of botonesBorrar)
         botonBorrar.addEventListener("click", BorrarComentario);
+        let botonEnviar = document.querySelector("#botonEnviar");
+        botonEnviar.addEventListener("click", EnviarComentario);
     }
 
-    function BorrarComentario(e){
+    async function BorrarComentario(e){
         e.preventDefault();
         let id = this.id;
-        fetch("api/comentarios/"+id,{method:'DELETE'}).catch(error => console.log(error));
-        GetComentarios();
+        let r = await fetch("api/comentarios/"+id,
+            {
+                "method":'DELETE'
+            });
+        console.log(r);
+        setTimeout(GetComentarios,0);
+        // catch(error => console.log(error));
+    }
+
+    async function EnviarComentario(e){
+        e.preventDefault();
+        let idUsuario = 1; // HARDCODEADO
+        let idEvento = document.getElementById("evento").dataset.id;
+        let comentario = document.getElementById("comentario").value;
+        let puntaje = document.getElementById("puntaje").value;
+        let comentarioNuevo = {
+            "id_usuario": idUsuario,
+            "id_evento" : idEvento,
+            "comentario" : comentario,
+            "puntaje" : puntaje
+        }
+        let r = await fetch("api/comentarios",
+            {
+                "method": "POST",
+                "body": JSON.stringify(comentarioNuevo)
+        })
+        console.log(r);
+        setTimeout(GetComentarios,0);
+        // catch(error => console.log(error));
+
     }
 })
