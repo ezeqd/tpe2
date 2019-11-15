@@ -1,6 +1,7 @@
 
 {literal}
   <div id="app">
+  Promedio de Puntuación: {{promedio}}
       <ul>
        <li v-for="comentario in comentarios">
            {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}

@@ -23,7 +23,6 @@ class ComentariosApiController extends ApiController{
 
     public function GetComentario($params = null) {
         // obtiene el parametro de la ruta
-        
         if(isset($params)){
             $id = $params[':ID'];
             $comentario = $this->model->GetComentarioById($id);
@@ -32,6 +31,16 @@ class ComentariosApiController extends ApiController{
             $this->view->response($comentario, 200);   
         } else {
             $this->view->response("No existe la tarea con el id={$id}", 404);
+        }
+    }
+
+    public function GetPromedioPuntajeByEvento($params = null){
+        $id = $params[':ID'];
+        $promedio = $this->model->GetPromedioPuntajeByEvento($id);
+        if ($promedio) {
+            $this->view->response($promedio, 200);   
+        } else {
+            $this->view->response("No existen puntajes para calcular el promedio para el evento con id={$id}", 404);
         }
     }
 

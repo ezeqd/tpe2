@@ -27,6 +27,14 @@ class ComentariosModel {
         $comentario = $sentencia->fetch(PDO::FETCH_OBJ);
         return $comentario;
     }
+
+    public function GetPromedioPuntajeByEvento($id){
+        $sentencia = $this->db->prepare("SELECT AVG(puntaje) AS promedio FROM comentario WHERE id_evento=?");
+        $sentencia->execute(array($id));
+        $promedio = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $promedio;
+        
+    }
     
     public function InsertarComentario($id_usuario,$id_evento,$comentario,$puntaje){
         $sentencia = $this->db->prepare("INSERT INTO comentario(id_usuario, id_evento, comentario, puntaje) VALUES(?,?,?,?)");
