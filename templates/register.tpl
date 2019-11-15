@@ -16,4 +16,5 @@
 {if $error}
 <div>{$error}</div>
 {/if}
+{include file="section.tpl"}
 {include file="footer.tpl"}

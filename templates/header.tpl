@@ -6,6 +6,10 @@
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <base href='{$BASE_URL}' >
                 <title>{$titulo}</title>
+                <!-- Nota: cuando se despliegue, reemplazar "development.js" con "production.min.js". -->
+                <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+                <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+                <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
             </head>
             <header>
               <div class="logo"></div>

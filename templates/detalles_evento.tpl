@@ -33,3 +33,5 @@
                </tr>
         </tbody>
         </table>
+        {include file="section.tpl"}
+        {include file="footer.tpl"}
