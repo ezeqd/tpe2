@@ -17,15 +17,10 @@ class UserController {
     }
     
     public function SwitchAdmin($email){
-        $admin = $this->authHelper->CheckLogInAdmin();
-        if (!$admin){
-            $this->view->DisplayLogin("Logearse como Administrador");
-        }
-        else{
-            $usuario = $this->model->GetUsuario($email);
-            $admin = !$usuario->admin;
-            $this->model->SwitchAdmin($admin,$usuario);
-        }
+        $this->authHelper->CheckLogInAdmin();
+        $usuario = $this->model->GetUsuario($email);
+        $admin = !$usuario->admin;
+        $this->model->SwitchAdmin($admin,$usuario);
     }
 
     public function ShowRegister(){
@@ -40,6 +35,11 @@ class UserController {
         $usuario = $this->model->GetUsuario($user);
         $this->authHelper->login($usuario);        
         header("Location: " . BASE_URL);    
+    }
+
+    public function BorrarUsuario($email){
+        $this->authHelper->CheckLogInAdmin();
+        $this->model->BorrarUsuario($email);
     }
 }
 ?>

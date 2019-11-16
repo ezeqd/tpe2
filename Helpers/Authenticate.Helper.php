@@ -32,11 +32,9 @@ class authHelper {
 	
 	public function CheckLogInAdmin(){
 		$this->checkLogIn();
-		if (!$_SESSION['admin']){
-			return false;
-		}
-		else{
-			return true;
+		if (!$_SESSION['admin']){            
+			header("Location: " . URL_LOGOUT);
+            die();
 		}
 	}
 

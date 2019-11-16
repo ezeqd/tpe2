@@ -4,8 +4,10 @@
   Promedio de Puntuación: {{promedio}}
       <ul>
        <li v-for="comentario in comentarios">
-           {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}
-           <a :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</a>
+          {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}
+          
+            <button v-if="admin==1" v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</a>
+          
        </li>
     </ul>
     <form>
@@ -22,7 +24,7 @@
           <option value="5">5</option>
         </select>
       </label>
-      <button type="submit" id="botonEnviar">Enviar</button>
+      <button v-on:click="insertar" id="botonEnviar">Enviar</button>
     </form>
   </div>
 {/literal}

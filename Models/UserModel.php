@@ -12,7 +12,6 @@ class UserModel {
         //acá irian unos try-catch
         $sentencia = $this->db->prepare("SELECT * FROM usuario WHERE email = ?");
         $sentencia->execute(array($email));
-        
         $usuario = $sentencia->fetch(PDO::FETCH_OBJ);
         
         return $usuario;
@@ -29,7 +28,10 @@ class UserModel {
         $sentencia->execute(array($usuario,$pass,0));
     }
 
-    
+    public function BorrarUsuario($email){
+        $sentencia = $this->db->prepare("DELETE FROM usuario WHERE email=?");
+        $sentencia->execute(array($email));
+    }    
 }
 
 ?>

@@ -6,11 +6,45 @@ document.addEventListener('DOMContentLoaded', async () => {
         data: {
             promedio: null,
             comentarios : null,
-            admin : true
+            admin : null
+        },
+        methods: {
+            borrar :    async function BorrarComentario(id){
+                            if (app.admin==1){
+                                let idBorrar = id;
+                                let r = await fetch("api/comentarios/"+idBorrar,
+                                    {
+                                        "method":'DELETE'
+                                    });
+                                GetComentarios();
+                                // catch(error => console.log(error));
+                            }
+                        },
+            insertar :  async function EnviarComentario(e){
+                            e.preventDefault();
+                            let usuario = idUsuario; 
+                            let comentario = document.getElementById("comentario").value;
+                            let puntaje = document.getElementById("puntaje").value;
+                            let comentarioNuevo = {
+                                "id_usuario": usuario,
+                                "id_evento" : idEvento,
+                                "comentario" : comentario,
+                                "puntaje" : puntaje
+                            }
+                            let r = await fetch("api/comentarios",
+                                {
+                                    "method": "POST",
+                                    "body": JSON.stringify(comentarioNuevo)
+                            })
+                            GetComentarios();
+                            // catch(error => console.log(error));
+                        }
         }
     })
-    let idEvento = document.getElementById("evento").dataset.id;
-
+    let idEvento = document.getElementById("data").dataset.idevento;
+    let idUsuario = document.getElementById("data").dataset.idusuario;
+    let admin = document.getElementById("data").dataset.admin;
+    app.admin = admin;
     GetPromedioPuntaje();
     GetComentarios();
 
@@ -24,50 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let r = await fetch("api/comentarios/eventos/"+idEvento)
         let json = await r.json();
         app.comentarios = await json;
-        setTimeout(AsignarEventListener,0);
-        setTimeout(GetPromedioPuntaje,0);
+        GetPromedioPuntaje();
         // catch(error => console.log(error));
-    }
-    
-    async function AsignarEventListener(){
-        let botonesBorrar = document.querySelectorAll(".botonBorrar");
-        for (let botonBorrar of botonesBorrar)
-        botonBorrar.addEventListener("click", BorrarComentario);
-        let botonEnviar = document.querySelector("#botonEnviar");
-        botonEnviar.addEventListener("click", EnviarComentario);
-    }
-
-    async function BorrarComentario(e){
-        e.preventDefault();
-        if (app.admin){
-            let id = this.id;
-            let r = await fetch("api/comentarios/"+id,
-                {
-                    "method":'DELETE'
-                });
-            setTimeout(GetComentarios,0);
-            // catch(error => console.log(error));
-        }
-    }
-
-    async function EnviarComentario(e){
-        e.preventDefault();
-        let idUsuario = 1; // HARDCODEADO
-        let comentario = document.getElementById("comentario").value;
-        let puntaje = document.getElementById("puntaje").value;
-        let comentarioNuevo = {
-            "id_usuario": idUsuario,
-            "id_evento" : idEvento,
-            "comentario" : comentario,
-            "puntaje" : puntaje
-        }
-        let r = await fetch("api/comentarios",
-            {
-                "method": "POST",
-                "body": JSON.stringify(comentarioNuevo)
-        })
-        setTimeout(GetComentarios,0);
-        // catch(error => console.log(error));
-
-    }
+    }    
 })

@@ -13,7 +13,7 @@
           </tr>
         </thead>
           <tbody>
-               <tr id="evento" data-id="{$evento->id_evento}">
+               <tr id="data" data-idEvento="{$evento->id_evento}" data-idUsuario="{if isset ($usuario)}{$usuario->id_usuario}{/if}" data-admin="{if isset ($usuario)}{$usuario->admin}{/if}">
                  <td class="animated fadeIn">{$evento->nombre}</td>
                  <td class="animated fadeIn">{$evento->fecha}</td>
                  <td class="animated fadeIn">{$evento->organizador}</td>

@@ -31,10 +31,11 @@ class EventosView {
         $this->smarty->display('templates/editar_evento.tpl');
     }
 
-    public function DisplayDetallesEvento($evento,$imagenes){
+    public function DisplayDetallesEvento($evento,$imagenes,$usuario){
         $this->smarty->assign('titulo',"Detalles Evento");
         $this->smarty->assign('evento',$evento);
         $this->smarty->assign('imagenes',$imagenes);
+        $this->smarty->assign('usuario',$usuario);
         $this->smarty->display('templates/detalles_evento.tpl');
     }
 }

@@ -10,6 +10,7 @@ class EventosController {
     private $model;
     private $ciudadesmodel;
     private $imagenesmodel;
+    private $usermodel;
     private $view;
     private $authHelper;
 
@@ -17,6 +18,7 @@ class EventosController {
         $this->model = new EventosModel();
         $this->ciudadesmodel = new CiudadesModel();
         $this->imagenesmodel = new ImagenesModel();
+        $this->usermodel = new UserModel();
         $this->view = new EventosView();
         $this->authHelper = new AuthHelper();
     }
@@ -57,7 +59,11 @@ class EventosController {
     public function ShowDetallesEvento($id){
         $evento = $this->model->GetEventoById($id);
         $imagenes = $this->imagenesmodel->GetImagenes($id);
-        $this->view->DisplayDetallesEvento($evento,$imagenes);
+        $email = $this->authHelper->getLoggedUserName();
+        if (isset ($email)){
+            $usuario = $this->usermodel->GetUsuario($email);
+        }
+        $this->view->DisplayDetallesEvento($evento,$imagenes,$usuario);
     }
 
     public function EditarEvento($id){

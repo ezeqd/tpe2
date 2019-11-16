@@ -12,6 +12,7 @@
               <div class="logo"></div>
                 {if isset($userName)}
                     <h1>Hola {$userName}</h1>
+                    <div data-id="id_usuario"
                     <div><form action="logout" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log out"></input></form></div>
                 {else}
                     <h1>Hola Invitado</h1>
