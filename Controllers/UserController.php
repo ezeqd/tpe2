@@ -37,6 +37,16 @@ class UserController {
         header("Location: " . BASE_URL);    
     }
 
+    public function ShowRecovery(){
+        $this->view->DisplayRecovery();
+    }
+
+    public function Recovery(){
+        $lostUser = $_POST['lost-user'];
+        $user = $this->model->getUsuario($lostUser);
+        //aca debo enviar mail al $user
+    }
+
     public function BorrarUsuario($email){
         $this->authHelper->CheckLogInAdmin();
         $this->model->BorrarUsuario($email);
