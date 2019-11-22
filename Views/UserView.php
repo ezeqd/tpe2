@@ -5,9 +5,15 @@ require_once('libs/Smarty.class.php');
 class UserView {
 
     private $smarty;
+    private $authHelper;
+    private $userName;
 
     function __construct(){
         $this->smarty = new Smarty();
+        $this->authHelper = new AuthHelper();
+        $this->userName = $this->authHelper->getLoggedUserName();
+        $this->smarty->assign('userName', $this->userName);
+        $this->smarty->assign('BASE_URL',BASE_URL);
     }
     
     public function DisplayLogin($error = null){
@@ -22,6 +28,15 @@ class UserView {
         $this->smarty->assign('error',$error);
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/register.tpl');
+    }
+
+    public function DisplayUsuarios($usuarios, $usuario, $error = null){
+        $this->smarty->assign('titulo','Usuarios');
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('lista_usuarios',$usuarios);
+        $this->smarty->assign('user',$usuario);
+        $this->smarty->assign('BASE_URL',BASE_URL);
+        $this->smarty->display('templates/ver_usuarios.tpl');    
     }
 }
 ?>

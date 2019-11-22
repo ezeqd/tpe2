@@ -22,6 +22,11 @@
                 {if isset($error)}
                     <div>{$error}</div>
                 {/if}
+                <nav>
+                    <ul><a href="{BASE_URL}eventos">Eventos</a></ul>
+                    <ul><a href="{BASE_URL}ciudades">Ciudades</a></ul>
+                    <ul><a href="{BASE_URL}usuarios">Usuarios</a></ul>
+                </nav>
             </header>
             <body>
             <h1>{$titulo}</h1>

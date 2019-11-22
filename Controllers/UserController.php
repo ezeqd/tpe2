@@ -16,11 +16,14 @@ class UserController {
         $this->authHelper = new authHelper();
     }
     
-    public function SwitchAdmin($email){
+    public function SwitchAdmin($id){
         $this->authHelper->CheckLogInAdmin();
-        $usuario = $this->model->GetUsuario($email);
-        $admin = !$usuario->admin;
+        $usuario = $this->model->GetUsuarioById($id);
+        $admin = (int)!$usuario->admin;
+        // var_dump($admin);die();
+
         $this->model->SwitchAdmin($admin,$usuario);
+        header("Location: " . URL_USUARIOS);    
     }
 
     public function ShowRegister(){
@@ -37,9 +40,21 @@ class UserController {
         header("Location: " . BASE_URL);    
     }
 
-    public function BorrarUsuario($email){
+    public function BorrarUsuario($id){
         $this->authHelper->CheckLogInAdmin();
-        $this->model->BorrarUsuario($email);
+        $this->model->BorrarUsuario($id);
+        header("Location: " . URL_USUARIOS);    
+    }
+
+    public function ShowUsuarios(){
+        $this->authHelper->CheckLogIn();
+        $usuarios = $this->model->GetUsuarios();
+        $email = $this->authHelper->getLoggedUserName();
+        if (isset ($email)){
+            $usuario = $this->model->GetUsuario($email);
+        }
+        $this->view->DisplayUsuarios($usuarios,$usuario);
+
     }
 }
 ?>
