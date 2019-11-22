@@ -4,7 +4,7 @@
   Promedio de Puntuación: {{promedio}}
       <ul>
        <li v-for="comentario in comentarios">
-          {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}
+          {{ comentario.fecha }} - {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}
           
             <button v-if="admin==1" v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</a>
           
