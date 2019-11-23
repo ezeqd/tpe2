@@ -12,6 +12,7 @@ define("URL_EVENTOS", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_POR
 define("URL_CIUDADES", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/ciudades');
 define("URL_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
 define("URL_LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
+define("URL_USUARIOS", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/usuarios');
 
 $eventosController = new EventosController();
 $ciudadesController = new CiudadesController();
@@ -69,6 +70,17 @@ else{
             }  
             elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "borrar")){
                 $imagenesController->BorrarImagen($partesURL[2]);
+            }
+        }
+        elseif($partesURL[0] == "usuarios") {
+            if ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "admin")){
+                $userController->SwitchAdmin($partesURL[2]);
+            }  
+            elseif ((isset($partesURL[1]))&&(isset($partesURL[2]))&&($partesURL[1] == "borrar")){
+                $userController->BorrarUsuario($partesURL[2]);
+            }
+            else{
+                $userController->ShowUsuarios();
             }
         }
         elseif($partesURL[0] == "login") {

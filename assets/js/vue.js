@@ -54,8 +54,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         app.promedio = await json.promedio;
     }
 
-    async function GetComentarios() {
-        let r = await fetch("api/comentarios/eventos/"+idEvento)
+    async function GetComentarios(//atributo,orden//
+        ) {
+        let r = await fetch("api/comentarios/eventos/"+idEvento//+"?atributo="+atributo+"&orden="+orden//
+        )
         let json = await r.json();
         app.comentarios = await json;
         GetPromedioPuntaje();
