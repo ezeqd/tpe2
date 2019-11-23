@@ -8,14 +8,18 @@ class ComentariosModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe2_db;charset=utf8', 'root', '');
     }
 
-    public function GetComentarios($id = null){
+    public function GetComentarios($id = null, $atributo,$orden){
         if(isset($id)){
-            $sentencia = $this->db->prepare("SELECT comentario.*,usuario.email AS usuario FROM comentario JOIN usuario ON comentario.id_usuario=usuario.id_usuario WHERE id_evento=?");
-            $sentencia->execute(array($id));
+            $sentencia = $this->db->prepare("SELECT comentario.*,usuario.email AS usuario FROM comentario JOIN usuario ON comentario.id_usuario=usuario.id_usuario WHERE id_evento=? ORDER BY ? ?");
+            $sentencia->execute(array($id,$atributo,$orden));
+            var_dump($atributo);
+            var_dump($id);
+            var_dump($orden);
+            var_dump($sentencia->errorInfo()); die();
         }
         else {
-            $sentencia = $this->db->prepare("SELECT * FROM comentario");
-            $sentencia->execute();
+            $sentencia = $this->db->prepare("SELECT * FROM comentario ORDER BY ? ?");
+            $sentencia->execute(array($atributo,$orden));
         }
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comentarios;

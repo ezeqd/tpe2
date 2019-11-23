@@ -2,14 +2,25 @@
 {literal}
   <div id="app">
   Promedio de Puntuación: {{promedio}}
-      <ul>
-       <li v-for="comentario in comentarios">
-          {{ comentario.fecha }} - {{ comentario.usuario }} - {{ comentario.comentario }} - {{comentario.puntaje}}
-          
-            <button v-if="admin==1" v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</a>
-          
-       </li>
-    </ul>
+  <table>
+          <thead>
+            <tr>
+              <th>Fecha <a :href=baseurl+"?atributo=fecha&orden=asc">▲</a><a :href=baseurl+"?atributo=fecha&orden=desc">▼</a></th>
+              <th>Usuario<a :href=baseurl+"?atributo=usuario&orden=asc">▲</a><a :href=baseurl+"?atributo=usuario&orden=desc">▼</a></th>
+              <th>Comentario<a :href=baseurl+"?atributo=comentario&orden=asc">▲</a><a :href=baseurl+"?atributo=comentario&orden=desc">▼</a></th>
+              <th>Puntaje<a :href=baseurl+"?atributo=puntaje&orden=asc">▲</a><a :href=baseurl+"?atributo=puntaje&orden=desc">▼</a></th>
+              <th v-if="admin==1" scope="col">Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
+           <tr v-for="comentario in comentarios">
+              <td>{{ comentario.fecha }}</td>
+              <td>{{ comentario.usuario }}</td>
+              <td>{{ comentario.comentario }}</td>
+              <td>{{ comentario.puntaje }}</td>
+              <td v-if="admin==1"><button  v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</button></td>
+          </tbody>
+    </table>
     <form>
       <input type="hidden" id="usuario" value="{userName}">
       <label> Comentario:

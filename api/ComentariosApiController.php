@@ -11,15 +11,23 @@ class ComentariosApiController extends ApiController{
     }
 
     public function ShowComentarios($params = null){
+        $atributo = "fecha";
+        $orden = "DESC";
+        if ((isset($_GET["atributo"]))&& isset(($_GET["orden"]))){
+            $atributo = $_GET["atributo"];
+            $orden = $_GET["orden"];
+        }
         if(isset($params)){
             $id = $params[':ID'];
-            $comentarios = $this->model->GetComentarios($id);
+            $comentarios = $this->model->GetComentarios($id,$atributo,$orden);
+            // var_dump($orden);die();
         }
-        else {
-            $comentarios = $this->model->GetComentarios();
+        else{
+            $comentarios = $this->model->GetComentarios($atributo,$orden);
         }
         $this->view->response($comentarios, 200);
     }
+        
 
     public function GetComentario($params = null) {
         // obtiene el parametro de la ruta
@@ -47,9 +55,9 @@ class ComentariosApiController extends ApiController{
     public function InsertarComentario(){
         // $this->authHelper->checkLogIn();
         $comentario = $this->getData(); // la obtengo del body
-
+        
         // inserta evento
-        $comentarioId = $this->model->InsertarComentario($comentario->id_usuario,$comentario->id_evento,$comentario->comentario,$comentario->puntaje);
+        $comentarioId = $this->model->InsertarComentario($comentario->id_usuario,$comentario->id_evento,$comentario->comentario,$comentario->puntaje,atributo,orden);
         
         // obtengo la recien creada
         $comentarioNuevo = $this->model->GetComentarioById($comentarioId);
