@@ -30,6 +30,13 @@ class UserView {
         $this->smarty->display('templates/register.tpl');
     }
 
+    public function DisplayRecovery($error = null){
+        $this->smarty->assign('titulo','Recuperar Contraseña');
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('BASE_URL',BASE_URL);
+        $this->smarty->display('templates/users/recovery.tpl');
+    }
+    
     public function DisplayUsuarios($usuarios, $usuario, $error = null){
         $this->smarty->assign('titulo','Usuarios');
         $this->smarty->assign('error',$error);
@@ -38,5 +45,5 @@ class UserView {
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/ver_usuarios.tpl');    
     }
-}
+
 ?>
