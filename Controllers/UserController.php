@@ -36,7 +36,7 @@ class UserController {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $this->model->SetUser($user, $hash);
         $usuario = $this->model->GetUsuario($user);
-        $this->authHelper->login($usuario);        
+        $this->authHelper->login($usuario);
         header("Location: " . BASE_URL);    
     }
 
@@ -48,10 +48,10 @@ class UserController {
         $lostUser = $_POST['lost-user'];
         $user = $this->model->getUsuario($lostUser);
         //aca debo enviar mail al $user
-        
+
     }
 
-    public function BorrarUsuario($email){
+    public function BorrarUsuario($id){
         $this->authHelper->CheckLogInAdmin();
         $this->model->BorrarUsuario($id);
         header("Location: " . URL_USUARIOS);    

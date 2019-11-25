@@ -14,21 +14,36 @@
               <div class="logo"></div>
                 {if isset($userName)}
                     <h1>Hola {$userName}</h1>
-                    <div data-id="id_usuario"
-                    <div><form action="logout" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log out"></input></form></div>
                 {else}
                     <h1>Hola Invitado</h1>
-                    <div><form action="login" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Log in"></input></form></div>
-                    <div><form action="register" method="POST" class="log-in-form"><input type="submit" class="button expanded" value="Register"></input></form></div>
                 {/if}
                 {if isset($error)}
                     <div>{$error}</div>
                 {/if}
-                <nav>
-                    <ul><a href="{BASE_URL}eventos">Eventos</a></ul>
-                    <ul><a href="{BASE_URL}ciudades">Ciudades</a></ul>
-                    <ul><a href="{BASE_URL}usuarios">Usuarios</a></ul>
-                </nav>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{BASE_URL}eventos">Eventos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{BASE_URL}ciudades">Ciudades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{BASE_URL}usuarios">Usuarios</a>
+                        </li>
+                {if isset($userName)}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{BASE_URL}logout">Logout</a>
+                        </li>
+                {else}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{BASE_URL}login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{BASE_URL}register">Registrar</a>
+                        </li>
+                    </ul>
+                {/if}
+                
             </header>
             <body>
             <h1>{$titulo}</h1>

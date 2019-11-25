@@ -1,6 +1,6 @@
 {include file="header.tpl"}
-        <table>
-          <thead>
+        <table class="table">
+          <thead class="thead-dark">
             <tr>
               <th scope="col">Nombre</th>
               <th scope="col">Capacidad</th>
@@ -13,13 +13,13 @@
           <tbody>
         {foreach from=$lista_ciudades item=ciudad}
             <tr>
-                <td class="animated fadeIn">{$ciudad->nombre}</td>
-                <td class="animated fadeIn">{$ciudad->capacidad}</td>
+                <td>{$ciudad->nombre}</td>
+                <td>{$ciudad->capacidad}</td>
             {if isset($userName)}
-                <td class="animated fadeIn">
+                <td>
 				<form action="ciudades/borrar/{$ciudad->id_ciudad}"><button type="submit">Borrar</button></form>
 				</td>
-				<td class="animated fadeIn">
+				<td>
 				<form action="ciudades/formeditar/{$ciudad->id_ciudad}"><button type="submit">Editar</button></form>
 				</td>
             {/if}

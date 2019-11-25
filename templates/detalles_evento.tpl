@@ -1,6 +1,6 @@
 {include file="header.tpl"}
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Fecha</th>
@@ -14,15 +14,15 @@
         </thead>
           <tbody>
                <tr id="data" data-idEvento="{$evento->id_evento}" data-idUsuario="{if isset ($usuario)}{$usuario->id_usuario}{/if}" data-admin="{if isset ($usuario)}{$usuario->admin}{/if}">
-                 <td class="animated fadeIn">{$evento->nombre}</td>
-                 <td class="animated fadeIn">{$evento->fecha}</td>
-                 <td class="animated fadeIn">{$evento->organizador}</td>
-                 <td class="animated fadeIn"><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
+                 <td>{$evento->nombre}</td>
+                 <td>{$evento->fecha}</td>
+                 <td>{$evento->organizador}</td>
+                 <td><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
                  {if isset($userName)}
-                   <td class="animated fadeIn">
+                   <td>
                      <form action="eventos/borrar/{$evento->id_evento}"><button type="submit">Borrar</button></form>
                    </td>
-                   <td class="animated fadeIn">
+                   <td>
                      <form action="eventos/formeditar/{$evento->id_evento}"><button value="{$evento->id_evento}" type="submit">Editar</button></form>
                    </td>
                  {/if}
@@ -31,7 +31,7 @@
         </table>
         {if isset($imagenes)}
           {foreach from=$imagenes item=imagen}
-            <div>
+            <picture>
               <img class="img-thumbnail" src="{$imagen->url_imagen}"/>
               <form action="imagenes/borrar/{$imagen->id_imagen}" method="POST" ><input type="hidden" name="id" value="{$evento->id_evento}"><button type="submit">Borrar</button></form>
             </div>

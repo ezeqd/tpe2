@@ -1,6 +1,6 @@
 {include file="header.tpl"}
-        <table>
-          <thead>
+        <table class="table">
+          <thead class="thead-dark">
             <tr>
               <th scope="col">Nombre</th>
               <th scope="col">Fecha</th>
@@ -16,18 +16,18 @@
           <tbody>
           {foreach from=$lista_eventos item=evento}
                   <tr>
-                    <td class="animated fadeIn">{$evento->nombre}</td>
-                    <td class="animated fadeIn">{$evento->fecha}</td>
-                    <td class="animated fadeIn">{$evento->organizador}</td>
-                    <td class="animated fadeIn"><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
-										<td class="animated fadeIn">
+                    <td>{$evento->nombre}</td>
+                    <td>{$evento->fecha}</td>
+                    <td>{$evento->organizador}</td>
+                    <td><a href="eventos?filter={$evento->ciudad}">{$evento->ciudad}</a></td>
+										<td>
 												<form action="eventos/detalles/{$evento->id_evento}"><button value="{$evento->id_evento}" type="submit">Ver</button></form>
 										</td>
                     {if isset($userName)}
-											<td class="animated fadeIn">
+											<td>
 												<form action="eventos/borrar/{$evento->id_evento}"><button type="submit">Borrar</button></form>
 											</td>
-											<td class="animated fadeIn">
+											<td>
 												<form action="eventos/formeditar/{$evento->id_evento}"><button type="submit">Editar</button></form>
 											</td>
                     {/if}

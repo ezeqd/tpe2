@@ -1,8 +1,7 @@
 
 {literal}
   <div id="app">
-  Promedio de Puntuación: {{promedio}}
-  <table>
+  <table class="table">
           <thead>
             <tr>
               <th>Fecha <a href="" v-on:click.prevent="get('fecha','ASC')">▲</a><a href="" v-on:click.prevent="get('fecha','DESC')">▼</a></th>
@@ -21,6 +20,9 @@
               <td v-if="admin==1"><button  v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</button></td>
           </tbody>
     </table>
+
+    <p class="lead">Promedio de Puntuación: {{promedio}}</p>
+    
     <form v-if="login==1">
       <input type="hidden" id="usuario" value="{userName}">
       <label> Comentario:

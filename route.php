@@ -96,7 +96,7 @@ else{
             $userController->ShowRegister();
         }
         elseif($partesURL[0] == "newuser") {
-            $userController->ShowRegister();
+            $userController->Register();
         }
         elseif($partesURL[0] == "recovery") {
             $userController->ShowRecovery();
