@@ -11,16 +11,8 @@
                 <title>{$titulo}</title>
             </head>
             <header>
-              <div class="logo"></div>
-                {if isset($userName)}
-                    <h1>Hola {$userName}</h1>
-                {else}
-                    <h1>Hola Invitado</h1>
-                {/if}
-                {if isset($error)}
-                    <div>{$error}</div>
-                {/if}
-                    <ul class="nav justify-content-center">
+                <div  class="d-flex bd-highlight mb-e">
+                    <ul class="nav justify-content-start p-2 bd-highlight>
                         <li class="nav-item">
                             <a class="nav-link active" href="{BASE_URL}eventos">Eventos</a>
                         </li>
@@ -30,20 +22,31 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{BASE_URL}usuarios">Usuarios</a>
                         </li>
+                    </ul>
+                    <ul class="nav justify-content-end ml-auto p-2 bd-highlight>
                 {if isset($userName)}
+                        <li class="nav-item">
+                            <span class="nav-link">Hola {$userName}</span>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{BASE_URL}logout">Logout</a>
                         </li>
                 {else}
+                        <li class="nav-item">
+                            <span class="nav-link">Hola Invitado</span>
+                        <li>
                         <li class="nav-item">
                             <a class="nav-link" href="{BASE_URL}login">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{BASE_URL}register">Registrar</a>
                         </li>
-                    </ul>
                 {/if}
-                
+                    </ul>
+                </div>
+                {if isset($error)}
+                    <div>{$error}</div>
+                {/if}
             </header>
             <body>
-            <h1>{$titulo}</h1>
+            <h1 class="p-3 mb-2 bg-primary text-white">{$titulo}</h1>

@@ -17,7 +17,7 @@ class EventosView {
     }
     
     public function DisplayEventos($eventos,$ciudades,$error = null){
-        $this->smarty->assign('titulo',"Mostrar Eventos");
+        $this->smarty->assign('titulo',"Eventos");
         $this->smarty->assign('lista_ciudades',$ciudades);
         $this->smarty->assign('lista_eventos',$eventos);
         $this->smarty->assign('error',$error);
@@ -32,7 +32,7 @@ class EventosView {
     }
 
     public function DisplayDetallesEvento($evento,$imagenes,$usuario){
-        $this->smarty->assign('titulo',"Detalles Evento");
+        $this->smarty->assign('titulo',"Detalle del Evento");
         $this->smarty->assign('evento',$evento);
         $this->smarty->assign('imagenes',$imagenes);
         $this->smarty->assign('usuario',$usuario);

@@ -47,6 +47,8 @@ class UserController {
     public function Recovery(){
         $lostUser = $_POST['lost-user'];
         $user = $this->model->getUsuario($lostUser);
+        $mailer = new Mailer();
+        
         //aca debo enviar mail al $user
 
     }

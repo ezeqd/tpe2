@@ -17,7 +17,7 @@ class CiudadesView {
 	}
 
 	public function DisplayCiudades($ciudades){
-		$this->smarty->assign('titulo',"Mostrar Ciudades");
+		$this->smarty->assign('titulo',"Ciudades");
         $this->smarty->assign('lista_ciudades',$ciudades);
         $this->smarty->display('templates/ver_ciudades.tpl');
 	}
