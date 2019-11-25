@@ -5,10 +5,10 @@
   <table>
           <thead>
             <tr>
-              <th>Fecha <a :href=baseurl+"?atributo=fecha&orden=asc">▲</a><a :href=baseurl+"?atributo=fecha&orden=desc">▼</a></th>
-              <th>Usuario<a :href=baseurl+"?atributo=usuario&orden=asc">▲</a><a :href=baseurl+"?atributo=usuario&orden=desc">▼</a></th>
-              <th>Comentario<a :href=baseurl+"?atributo=comentario&orden=asc">▲</a><a :href=baseurl+"?atributo=comentario&orden=desc">▼</a></th>
-              <th>Puntaje<a :href=baseurl+"?atributo=puntaje&orden=asc">▲</a><a :href=baseurl+"?atributo=puntaje&orden=desc">▼</a></th>
+              <th>Fecha <a href="" v-on:click.prevent="get('fecha','ASC')">▲</a><a href="" v-on:click.prevent="get('fecha','DESC')">▼</a></th>
+              <th>Usuario<a href="" v-on:click.prevent="get('usuario','ASC')">▲</a><a href="" v-on:click.prevent="get('usuario','DESC')">▼</a></th>
+              <th>Comentario<a href="" v-on:click.prevent="get('comentario','ASC')">▲</a><a href="" v-on:click.prevent="get('comentario','DESC')">▼</a></th>
+              <th>Puntaje<a href="" v-on:click.prevent="get('puntaje','ASC')">▲</a><a href="" v-on:click.prevent="get('puntaje','DESC')">▼</a></th>
               <th v-if="admin==1" scope="col">Borrar</th>
             </tr>
           </thead>

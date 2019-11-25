@@ -10,16 +10,13 @@ class ComentariosModel {
 
     public function GetComentarios($id = null, $atributo,$orden){
         if(isset($id)){
-            $sentencia = $this->db->prepare("SELECT comentario.*,usuario.email AS usuario FROM comentario JOIN usuario ON comentario.id_usuario=usuario.id_usuario WHERE id_evento=? ORDER BY ? ?");
-            $sentencia->execute(array($id,$atributo,$orden));
-            var_dump($atributo);
-            var_dump($id);
-            var_dump($orden);
-            var_dump($sentencia->errorInfo()); die();
+            $sentencia = $this->db->prepare("SELECT comentario.*,usuario.email AS usuario FROM comentario JOIN usuario ON comentario.id_usuario=usuario.id_usuario WHERE id_evento=? ORDER BY $atributo $orden");
+            $sentencia->execute(array($id));
+            // var_dump($sentencia->errorInfo()); die();
         }
         else {
-            $sentencia = $this->db->prepare("SELECT * FROM comentario ORDER BY ? ?");
-            $sentencia->execute(array($atributo,$orden));
+            $sentencia = $this->db->prepare("SELECT * FROM comentario ORDER BY $atributo $orden");
+            $sentencia->execute(array());
         }
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comentarios;

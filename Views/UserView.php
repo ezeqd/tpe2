@@ -45,5 +45,5 @@ class UserView {
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/ver_usuarios.tpl');    
     }
-
+}
 ?>
