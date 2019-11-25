@@ -32,7 +32,7 @@
         {if isset($imagenes)}
           {foreach from=$imagenes item=imagen}
             <div>
-              <img src="{$imagen->url_imagen}"/>
+              <img class="img-thumbnail" src="{$imagen->url_imagen}"/>
               <form action="imagenes/borrar/{$imagen->id_imagen}" method="POST" ><input type="hidden" name="id" value="{$evento->id_evento}"><button type="submit">Borrar</button></form>
             </div>
           {/foreach}

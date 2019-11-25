@@ -41,6 +41,11 @@ class UserModel {
         $sentencia->execute(array($usuario,$pass,0));
     }
 
+    public function UpdatePass($id, $pass){
+        $sentencia = $this->db->prepare("UPDATE usuario SET password=? WHERE id_usuario=?");
+        $sentencia->execute(array($pass,$id));
+    }
+
     public function BorrarUsuario($id){
         $sentencia = $this->db->prepare("DELETE FROM usuario WHERE id_usuario=?");
         $sentencia->execute(array($id));

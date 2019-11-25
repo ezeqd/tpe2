@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         data: {
             promedio: null,
             comentarios : null,
+            login : null,
             admin : null,
             baseurl : null
         },
@@ -45,18 +46,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
     let idEvento = document.getElementById("data").dataset.idevento;
     let idUsuario = document.getElementById("data").dataset.idusuario;
-    let admin = document.getElementById("data").dataset.admin;
-    app.admin = admin;
-    app.baseurl = window.location.pathname;
+    GetData();
+    CheckLogin();
     GetComentarios();
     GetPromedioPuntaje();
+    
+    function GetData (){
+        let admin = document.getElementById("data").dataset.admin;
+        app.admin = admin;
+        app.baseurl = window.location.pathname;
+    }
+    
+    function CheckLogin(){    
+        if (idUsuario){
+            app.login=1;
+        }
+    }
     
     async function GetPromedioPuntaje() {
         let r = await fetch("api/comentarios/promedio/"+idEvento)
         let json = await r.json();
         app.promedio = await json.promedio;
     }
-    // Comentado las sentencias para ordenar en js el arreglo de comentarios
+    
     async function GetComentarios(atributo = null,orden = null) {
         let r;
         if (atributo&&orden){

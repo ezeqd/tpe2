@@ -48,6 +48,7 @@ class UserController {
         $lostUser = $_POST['lost-user'];
         $user = $this->model->getUsuario($lostUser);
         //aca debo enviar mail al $user
+        
     }
 
     public function BorrarUsuario($email){

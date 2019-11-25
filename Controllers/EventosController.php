@@ -62,8 +62,11 @@ class EventosController {
         $email = $this->authHelper->getLoggedUserName();
         if (isset ($email)){
             $usuario = $this->usermodel->GetUsuario($email);
+            $this->view->DisplayDetallesEvento($evento,$imagenes,$usuario);
         }
-        $this->view->DisplayDetallesEvento($evento,$imagenes,$usuario);
+        else{
+            $this->view->DisplayDetallesEvento($evento,$imagenes,null);
+        }
     }
 
     public function EditarEvento($id){

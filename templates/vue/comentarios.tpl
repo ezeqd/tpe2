@@ -21,7 +21,7 @@
               <td v-if="admin==1"><button  v-on:click="borrar(comentario.id_comentario)" :id="comentario.id_comentario" class="botonBorrar" href="#">eliminar</button></td>
           </tbody>
     </table>
-    <form>
+    <form v-if="login==1">
       <input type="hidden" id="usuario" value="{userName}">
       <label> Comentario:
         <input type="text" id="comentario" placeholder="Comentario">
