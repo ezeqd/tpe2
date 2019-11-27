@@ -3,6 +3,7 @@ require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
 require_once "./Helpers/Authenticate.Helper.php";
 require_once "./Helpers/Mailer.php";
+
 class UserController {
 
     private $model;
@@ -61,15 +62,25 @@ class UserController {
     }
 
     public function Recovery(){
-        $mail = new Mailer();
         if(isset($_POST['lost-user'])){
             $user = $this->model->getUsuario($_POST['lost-user']);
             if ($user){
                 $uniqidStr = md5(uniqid(mt_rand()));
-                
-
+                $receiver = $user->email;
+                $subject = "Recuperar contraseña";
+                $hash = "asd123";
+                $url = BASE_URL . "/showsetpass?id=". $hash;
+                $body = "Estimado usuario ingrese al siguiente link para cambiar la contraseña " . $url;
+                $mail = new Mailer($receiver,$subject, $body);
+                $error = $mail->sendMail();
+                if (empty($error)) {
+                    $this->view->DisplayRecovery("Mail enviado correctamente");
+                } else {
+                    $this->view->DisplayRecovery("Falló el envío de mail. Intente nuevamente");
+                }
+            } else {
+                $this->view->DisplayRecovery("Mail no valido");
             }
-
         }
 //instanciamos un objeto de la clase phpmailer al que llamamos 
 //   //por ejemplo mail
