@@ -101,6 +101,9 @@ else{
         elseif($partesURL[0] == "recovery") {
             $userController->ShowRecovery();
         }
+        elseif($partesURL[0] == "newrecovery") {
+            $userController->Recovery();
+        }
     }
 }
 ?>
