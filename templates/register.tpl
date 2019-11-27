@@ -10,7 +10,7 @@
   </label>
   <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
   <p><input type="submit" class="button expanded" value="Register"></p>
-  <p class="text-center"><a href="#">Forgot your password?</a></p>
+  <p class="text-center"><a href="recovery">Forgot your password?</a></p>
 </form>
 
 {if $error}

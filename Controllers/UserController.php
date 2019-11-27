@@ -45,7 +45,7 @@ class UserController {
     }
 
     public function Recovery(){
-        // $mail = new PHPMailer();
+        $mail = new Mailer();
         if(isset($_POST['lost-user'])){
             $user = $this->model->getUsuario($_POST['lost-user']);
             if ($user){
