@@ -2,9 +2,7 @@
 require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
 require_once "./Helpers/Authenticate.Helper.php";
-require_once "./Helpers/PHPMailer/PHPMailer.php";
-require_once "./Helpers/PHPMailer/SMTP.php";
-
+require_once "./Helpers/Mailer.php";
 class UserController {
 
     private $model;
