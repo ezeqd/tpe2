@@ -36,6 +36,14 @@ class UserView {
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/users/recovery.tpl');
     }
+
+    public function DisplaySetPass($hash = null, $error = null){
+        $this->smarty->assign('titulo','Recupero de Contraseña');
+        $this->smarty->assign('hash',$hash);
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('BASE_URL',BASE_URL);
+        $this->smarty->display('templates/users/set_pass.tpl');
+    }
     
     public function DisplayUsuarios($usuarios, $usuario, $error = null){
         $this->smarty->assign('titulo','Usuarios');

@@ -45,6 +45,32 @@ class UserController {
         $this->view->DisplayRecovery();
     }
 
+    public function SetPass(){
+        $hash = $_POST['hash'];
+        if ((isset($_POST['newpass1']))&&(isset($_POST['newpass2']))&&($_POST['newpass1']==$_POST['newpass2'])){
+            $pass = $_POST['newpass1'];
+            $password = password_hash($pass, PASSWORD_DEFAULT);
+            // decodificar hash y mandar ID usuario con pass al model
+            die();
+            $id = 
+            $this->model->UpdatePass($id,$password);
+
+        }
+        else{
+            $this->view->DisplaySetPass($hash,"Ingrese contraseñas idénticas");
+        }
+    }
+
+    public function ShowSetPass(){
+        if (isset ($_GET['id'])){
+            $this->view->DisplaySetPass($_GET['id']);
+        }
+        else{
+            header("Location: " . BASE_URL);
+        }
+
+    }
+
     public function Recovery(){
         if(isset($_POST['lost-user'])){
             $user = $this->model->getUsuario($_POST['lost-user']);
@@ -52,7 +78,11 @@ class UserController {
                 $crypt = new Encryption();
                 $receiver = $user->email;
                 $subject = "Recuperar contraseña";
+<<<<<<< HEAD
                 $hash = $crypt->hash($user->id_usuario);
+=======
+                $hash = "asd123";
+>>>>>>> 1edf3b20218e5b12813e1652ff7098b16ec5304d
                 $url = BASE_URL . "showsetpass?id=". $hash;
                 $body = "Estimado usuario ingrese al siguiente link para cambiar la contraseña " . $url;
                 $mail = new Mailer($receiver,$subject, $body);

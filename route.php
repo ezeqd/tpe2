@@ -104,6 +104,12 @@ else{
         elseif($partesURL[0] == "newrecovery") {
             $userController->Recovery();
         }
+        elseif($partesURL[0] == "showsetpass") {
+            $userController->ShowSetPass();
+        }
+        elseif($partesURL[0] == "setpass") {
+            $userController->SetPass();
+        }
     }
 }
 ?>
