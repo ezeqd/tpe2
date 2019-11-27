@@ -44,6 +44,22 @@ class UserController {
         $this->view->DisplayRecovery();
     }
 
+    public function SetPass(){
+        if (isset($_POST['newpass1']))&&(isset($_POST['newpass2'])&&($_POST['newpass1']==$_POST['newpass2'])){
+            $pass = $_POST['newpass1'];
+            $hash = $_GET['id'];
+        }
+        // decodificar hash y mandar ID usuario con pass al model
+        $hash = 
+        $password = password_hash($pass, PASSWORD_DEFAULT);
+        $id = ;
+        $this->model->UpdatePass($id,$password);
+    }
+
+    public function ShowSetPass(){
+        $this->view->DisplaySetPass();
+    }
+
     public function Recovery(){
         $mail = new Mailer();
         if(isset($_POST['lost-user'])){
