@@ -47,6 +47,7 @@
                 {/if}
                     </ul>
                 </div>
+                
                 {if isset($error)}
                     <div>{$error}</div>
                 {/if}

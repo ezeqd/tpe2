@@ -78,11 +78,6 @@ class UserController {
                 $crypt = new Encryption();
                 $receiver = $user->email;
                 $subject = "Recuperar contraseña";
-<<<<<<< HEAD
-                $hash = $crypt->hash($user->id_usuario);
-=======
-                $hash = "asd123";
->>>>>>> 1edf3b20218e5b12813e1652ff7098b16ec5304d
                 $url = BASE_URL . "showsetpass?id=". $hash;
                 $body = "Estimado usuario ingrese al siguiente link para cambiar la contraseña " . $url;
                 $mail = new Mailer($receiver,$subject, $body);
