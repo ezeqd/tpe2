@@ -54,8 +54,8 @@ class UserController {
             // decodificar hash y mandar ID usuario con pass al model
             $crypt = new Encryption();
 
-            $id = $crypt->verify($hash);
-            if ($hash){
+            $id = $crypt->decrypt($hash);
+            if(!empty($this->model->GetUsuarioById($id))){
                 $this->model->UpdatePass($id,$password);
             }
         } else {
@@ -78,7 +78,7 @@ class UserController {
                 $crypt = new Encryption();
                 $receiver = $user->email;
                 $subject = "Recuperar contraseña";
-                $hash = $crypt->hash($user->id_usuario);
+                $hash = $crypt->encrypt($user->id_usuario);
                 $url = BASE_URL . "showsetpass?id=". $hash;
                 $body = "Estimado usuario ingrese al siguiente link para cambiar la contraseña " . $url;
                 $mail = new Mailer($receiver,$subject, $body);
