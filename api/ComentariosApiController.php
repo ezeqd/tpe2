@@ -13,11 +13,11 @@ class ComentariosApiController extends ApiController{
     public function ShowComentarios($params = null){
         $atributo = "fecha";
         $orden = "DESC";
+        $booleanAtributo = true;
+        $booleanOrden = true;
         if ((isset($_GET["atributo"]))&& isset(($_GET["orden"]))){
             $atributo = $_GET["atributo"];
             $orden = $_GET["orden"];
-            $booleanAtributo = false;
-            $booleanorden = false;
             switch($atributo){
                 case "fecha": case "usuario": case "comentario": case "puntaje":
                     $booleanAtributo = true; break;
@@ -28,7 +28,7 @@ class ComentariosApiController extends ApiController{
                 case "ASC": case "DESC":
                     $booleanOrden = true; break;
                 default:
-                $booleanOrden = false;
+                    $booleanOrden = false;
             }
         }
         if ($booleanAtributo&&$booleanOrden){
