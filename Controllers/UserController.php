@@ -36,10 +36,14 @@ class UserController {
         $password = $_POST['password'];
         $user = $_POST['usuario'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $this->model->SetUser($user, $hash);
         $usuario = $this->model->GetUsuario($user);
-        $this->authHelper->login($usuario);
-        header("Location: " . BASE_URL);    
+        if (empty($usuario)){
+            $this->model->SetUser($user, $hash);
+            $this->authHelper->login($usuario);
+            header("Location: " . BASE_URL);
+        } else {
+            $this->view->DisplayRegister("Email ya registrado");
+        }
     }
 
     public function ShowRecovery(){
