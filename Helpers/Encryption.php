@@ -1,7 +1,6 @@
 <?php
 
 class Encryption {
-    CONST SALT = "algo";
     CONST KEY = "tudai2019";
 
     function encrypt($string) {

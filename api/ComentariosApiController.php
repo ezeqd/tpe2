@@ -13,19 +13,35 @@ class ComentariosApiController extends ApiController{
     public function ShowComentarios($params = null){
         $atributo = "fecha";
         $orden = "DESC";
+        $booleanAtributo = true;
+        $booleanOrden = true;
         if ((isset($_GET["atributo"]))&& isset(($_GET["orden"]))){
             $atributo = $_GET["atributo"];
             $orden = $_GET["orden"];
+            switch($atributo){
+                case "fecha": case "usuario": case "comentario": case "puntaje":
+                    $booleanAtributo = true; break;
+                default:
+                    $booleanAtributo = false;
+            }
+            switch($orden){
+                case "ASC": case "DESC":
+                    $booleanOrden = true; break;
+                default:
+                    $booleanOrden = false;
+            }
         }
-        if(isset($params)){
-            $id = $params[':ID'];
-            $comentarios = $this->model->GetComentarios($id,$atributo,$orden);
-            // var_dump($orden);die();
+        if ($booleanAtributo&&$booleanOrden){
+            if(isset($params)){
+                $id = $params[':ID'];
+                $comentarios = $this->model->GetComentarios($id,$atributo,$orden);
+                // var_dump($orden);die();
+            }
+            else{
+                $comentarios = $this->model->GetComentarios($atributo,$orden);
+            }
+            $this->view->response($comentarios, 200);
         }
-        else{
-            $comentarios = $this->model->GetComentarios($atributo,$orden);
-        }
-        $this->view->response($comentarios, 200);
     }
         
 
