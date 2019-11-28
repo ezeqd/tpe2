@@ -15,6 +15,13 @@ class ImagenesModel {
         return $urlImagen;
     }
 
+    public function GetImagenById ($id){
+        $sentencia = $this->db->prepare("SELECT * FROM imagen WHERE id_imagen=?");
+        $sentencia->execute(array($id));
+        $imagen = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $imagen;
+    }
+
     public function InsertarImagen ($imagen,$id_evento){
         $filepath = null;
         if ($imagen){
@@ -32,8 +39,12 @@ class ImagenesModel {
     }
 
     public function BorrarImagen ($id){
+        $url = $this->GetImagenById($id)->url_imagen;
         $sentencia = $this->db->prepare("DELETE FROM imagen WHERE id_imagen=?");
         $sentencia->execute(array($id));
+        if ($url){
+            unlink("$url");
+        }
     }
 }
 ?>
