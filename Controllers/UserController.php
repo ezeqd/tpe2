@@ -3,6 +3,7 @@ require_once "./Models/UserModel.php";
 require_once "./Views/UserView.php";
 require_once "./Helpers/Authenticate.Helper.php";
 require_once "./Helpers/Mailer.php";
+require_once "./Helpers/Encryption.php";
 
 class UserController {
 
@@ -51,12 +52,13 @@ class UserController {
             $pass = $_POST['newpass1'];
             $password = password_hash($pass, PASSWORD_DEFAULT);
             // decodificar hash y mandar ID usuario con pass al model
-            die();
-            $id = 
-            $this->model->UpdatePass($id,$password);
+            $crypt = new Encryption();
 
-        }
-        else{
+            $id = $crypt->verify($hash);
+            if ($hash){
+                $this->model->UpdatePass($id,$password);
+            }
+        } else {
             $this->view->DisplaySetPass($hash,"Ingrese contraseñas idénticas");
         }
     }
@@ -64,11 +66,9 @@ class UserController {
     public function ShowSetPass(){
         if (isset ($_GET['id'])){
             $this->view->DisplaySetPass($_GET['id']);
-        }
-        else{
+        } else {
             header("Location: " . BASE_URL);
         }
-
     }
 
     public function Recovery(){
@@ -78,11 +78,7 @@ class UserController {
                 $crypt = new Encryption();
                 $receiver = $user->email;
                 $subject = "Recuperar contraseña";
-<<<<<<< HEAD
                 $hash = $crypt->hash($user->id_usuario);
-=======
-                $hash = "asd123";
->>>>>>> 1edf3b20218e5b12813e1652ff7098b16ec5304d
                 $url = BASE_URL . "showsetpass?id=". $hash;
                 $body = "Estimado usuario ingrese al siguiente link para cambiar la contraseña " . $url;
                 $mail = new Mailer($receiver,$subject, $body);
